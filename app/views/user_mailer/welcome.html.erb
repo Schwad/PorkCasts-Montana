@@ -1,0 +1,7 @@
+<h2>Welcome to PorkCasts!</h2>
+<br>
+<h4><strong>What happens next?</strong></h4><br>
+
+<p>Every day our application will scan the State of Montana's API, and if the State has registered a check written to <%= @user.queries[0].content %>, we will send you an email with the details of the check and a link to the Payee's history of receiving checks from the state. It's that simple!</p>
+
+<p><em>This email was sent to <%= @user.email %>. Not <%= @user.email %>? <a href="#">Click here to report or unsubscribe</a></em></p>
