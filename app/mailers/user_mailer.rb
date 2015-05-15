@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
   def welcome(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to CrudCrud!')
+    mail(to: @user.email, subject: 'Welcome to PorkCasts Montana!')
   end
 
   def query_match(user)

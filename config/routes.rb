@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   root "static_pages#index"
 
+  resources :users do
+    resources :queries
+  end
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
