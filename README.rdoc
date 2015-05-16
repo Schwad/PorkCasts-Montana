@@ -1,5 +1,70 @@
 OUTSTANDING ISSUES
 
+USER TIME
+
+-Allow sign up
+  -validations
+  -devise
+  -accepts nested params query
+  - 3 POINTS
+-Allow sign in
+  -1 POINT
+
+-takes email and query input on front page
+  -optional sign in in nav bar
+  -1 POINT
+
+  -prompts user to sign up if email is unique
+    -0 POINTS
+  -if email not unique, prompts log in
+    -0 POINTS
+
+-emails user welcome, confirms query
+  -2 POINTS
+
+-user page to change password or delete account
+  -0 POINTS
+
+QUERY CREATION / API
+
+-pull in historical data from API into application database
+  -3 POINTS
+
+-allows user to log in and view queries list, delete, add or edit queries
+  1 POINT
+
+-allows user to view query page and query's check history
+  1 POINT
+
+
+EMAIL
+-emails user when state writes check to payee
+  -3 POINTS
+
+-basic comparisons in email for user (average check size that month, check rank, total checks, total monthly spending)
+  -1 point
+
+-allows social network sharing with email
+  -2 POINTS
+
+
+BONUS
+
+-gives user autosuggest as typing for current payees
+  -3 POINTS
+-<<ELASTIC SEARCH>> 500 POINTS
+  -3 POINTS
+
+
+
+
+
+
+
+
+
+
+
 -NESTED PARAMETERS NOT PERMITTING AND INCLUDING FOR QUERY WITH USER. MANUALLY PUNCHING IT IN IN USERS CONTROLLER
 
 -USER NEEDS TO ACCESS THEIR OWN PAGE AND SEE LIST OF QUERIES, CLICKING EACH QUERY SHOULD SHOW CHECK HISTORY. CRUDDY.
