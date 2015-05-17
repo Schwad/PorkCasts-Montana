@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'pg'
 gem 'taps'
 gem 'devise'
+gem 'soda-ruby', :require => 'soda'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem "letter_opener", :group => :development
