@@ -13,12 +13,14 @@
     <tbody>
       <% i = 1 %>
       <% @queries.each do |query| %>
-        <td><%= i %></td>
-        <td><%= link_to query.content, query_path(query.id) %></td>
-        <td><%= query.created_at %></td>
-        <td><%= link_to "delete query", query_path(query.id), :method => :delete %>
-        <% i += 1 %>
-      <% end %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= link_to query.content, query_path(query.id) %></td>
+          <td><%= query.created_at %></td>
+          <td><%= link_to "delete query", query_path(query.id), :method => :delete %>
+          <% i += 1 %>
+        <% end %>
+      </tr>
     </tbody>
 
   </table>
