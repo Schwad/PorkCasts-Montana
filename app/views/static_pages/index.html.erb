@@ -11,6 +11,12 @@
           <%= link_to "Cancel my account", user_registration_path(current_user), :confirm => "Are you sure?", :method => :delete %>.
         </p>
     <% end %>
+
+    <% form_for @user do |f| %>
+      <%= f.text_field :email %>
+      <p> This will contain nested query later </p>
+      <%= f.submit "PorkCast!" %>
+    <% end %>
     </div>
   <div class="col-md-4"></div>
 </div>
