@@ -1,4 +1,16 @@
-OUTSTANDING ISSUES
+OUTSTANDING ISSUES TO RESOLVE LATER
+
+-nested query input attached to user and stored in front page form
+-autofill email category for signup/sign in if user navigated from main page form
+
+
+
+
+
+
+
+
+
 
 USER TIME
 
