@@ -8,6 +8,7 @@ class QueriesController < ApplicationController
 
   def edit
     @query = Query.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -18,6 +19,7 @@ class QueriesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @query = Query.new
 
   end
