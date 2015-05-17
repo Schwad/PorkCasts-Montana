@@ -1,6 +1,7 @@
 class QueriesController < ApplicationController
   def index
-    @queries = Query.all
+    @user = User.find(params[:user_id])
+    @queries = @user.queries
     # USE THAT LATER
     # @queries = current_user.queries
   end

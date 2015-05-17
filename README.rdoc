@@ -3,7 +3,16 @@ OUTSTANDING ISSUES TO RESOLVE LATER
 -nested query input attached to user and stored in front page form
 -autofill email category for signup/sign in if user navigated from main page form
 -currently tapping API for all query results; upscale to more robust way to store the data as opposed to multiple API hits.
+-TAKE OUT NEW USER QUERY SESSION IN NEW USER REGISTRATION NEW.HTML.ERB LATER
 
+###############
+CURRENT ISSUES
+
+MAKE SURE CURRENT USER CAN CREATE NEW QUERIES
+AUTH; MAKE SURE IT REQUIRES AND PERSISTS CURRENT USER.
+
+
+###############
 
 
 JQUERY ADD CLASS ACTIVE TO ROW ON HOVER: http://getbootstrap.com/css/

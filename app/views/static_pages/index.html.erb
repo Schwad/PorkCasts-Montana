@@ -2,23 +2,25 @@
   <div class="col-md-12"><h1>PorkCasts</h1></div>
 </div>
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
     <% if current_user %>
-      <h2>Welcome back to PorkCasts, <%= current_user.email %> !</h2>
+      <h2>Welcome to PorkCasts, <%= current_user.email %> !</h2>
       <h4>Not <%= current_user.email %>? <%= link_to "Click here", destroy_user_session_path, :method => :delete %>
         <p>
           <%= link_to "Cancel my account", user_registration_path(current_user), :confirm => "Are you sure?", :method => :delete %>.
         </p>
     <% end %>
 
-    <%= form_for @query do |f| %>
-      <%= f.text_field :content %>
-      <p> This will contain nested query later </p>
+    <%= form_for @user do |f| %>
+      <%= f.text_field :email %>
+      <%= fields_for @query do |query_fields| %>
+        <%= query_fields.text_field :content %>
+      <% end %>
       <%= f.submit "PorkCast!" %>
     <% end %>
     </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-2"></div>
 </div>
 
 <div class="row">

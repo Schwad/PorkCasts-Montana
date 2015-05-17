@@ -18,10 +18,10 @@
         <% @queries.each do |query| %>
           <tr>
             <td><%= i %></td>
-            <td><%= link_to query.content, query_path(query.id) %></td>
+            <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
             <td><%= query.created_at %></td>
-            <td><%= link_to "delete query", query_path(query.id), :method => :delete %></td>
-            <td><%= link_to "edit query", edit_query_path(query.id) %></td>
+            <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete %></td>
+            <td><%= link_to "edit query", edit_user_query_path(@user.id, query.id) %></td>
             <% i += 1 %>
           <% end %>
         </tr>
