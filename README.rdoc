@@ -15,7 +15,7 @@ app token: lHUM5m1RF3QfiupyzYsQQSDrY
 client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
 Issue a simple query. 644b-gaut is the identifier for the dataset we want to access:
 
-response = client.get("644b-gaut", {"$limit" => 1, :namelast => "WINFREY", :namefirst => "OPRAH"})
+response = client.get("pjb4-8ve5", {"$limit" => 1, :payee => "NICHOLAS R SCHWADERER"})
 
 
 USER TIME
