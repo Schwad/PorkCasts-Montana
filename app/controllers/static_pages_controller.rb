@@ -6,8 +6,7 @@ class StaticPagesController < ApplicationController
           :content => session[:new_user_query],
           :user_id => current_user.id
         )
-      reset_session
-      redirect_to user_queries_path(current_user.id)
+      session[:new_user_query] = nil
     end
     @user = User.new
     @query = Query.new

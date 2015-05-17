@@ -4,6 +4,9 @@ OUTSTANDING ISSUES TO RESOLVE LATER
 -autofill email category for signup/sign in if user navigated from main page form
 -currently tapping API for all query results; upscale to more robust way to store the data as opposed to multiple API hits.
 -TAKE OUT NEW USER QUERY SESSION IN NEW USER REGISTRATION NEW.HTML.ERB LATER
+-FIX MESSAGING FOR INITIAL PORKCAST/QUERY/SIGNUP
+-MAKE SURE IT REDIRECTS TO SIGNIN IF CURRENT USER
+-AUTO CREATES QUERY TO USER EVEN IF NOT SIGNED UP
 
 ###############
 CURRENT ISSUES

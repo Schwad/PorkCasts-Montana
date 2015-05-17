@@ -3,6 +3,7 @@ class UserMailer < ApplicationMailer
   default :bcc => "nicholas.schwaderer@gmail.com"
 
   def welcome(user)
+
     @user = user
     mail(to: @user.email, subject: 'Welcome to PorkCasts Montana!')
   end
