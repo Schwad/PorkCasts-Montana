@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def index
-    @user = User.new
+    # @user = User.new
   end
 
 end
