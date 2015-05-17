@@ -31,12 +31,18 @@ class QueriesController < ApplicationController
         redirect_to new_user_registration_path
       end
     else
-      Query.create(
+      @query = Query.create(
         :content => @query_email
         )
       flash[:success] = "Query created!"
-      redirect_to queries_path
+      redirect_to query_path(@query.id)
     end
+  end
+
+  def destroy
+    @query = Query.find(params[:id])
+    @query.destroy
+    redirect_to queries_path
   end
 
   def show
