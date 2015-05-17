@@ -12,8 +12,8 @@
         </p>
     <% end %>
 
-    <% form_for @user do |f| %>
-      <%= f.text_field :email %>
+    <%= form_for @query do |f| %>
+      <%= f.text_field :content %>
       <p> This will contain nested query later </p>
       <%= f.submit "PorkCast!" %>
     <% end %>
@@ -24,7 +24,6 @@
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <img src="/images/porkmontana.jpg">
   </div>
   <div class="col-md-4"></div>
 </div>
