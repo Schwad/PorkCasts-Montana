@@ -6,6 +6,8 @@ OUTSTANDING ISSUES TO RESOLVE LATER
 
 
 
+JQUERY ADD CLASS ACTIVE TO ROW ON HOVER: http://getbootstrap.com/css/
+
 RESOURCES:
 
 credit card api: https://data.datamontana.us/Financial/Montana-s-Checkbook-Credit-Card-Payments/dvui-wnnh

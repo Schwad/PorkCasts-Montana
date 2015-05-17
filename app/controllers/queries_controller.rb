@@ -1,6 +1,8 @@
 class QueriesController < ApplicationController
   def index
-    @queries = current_user.queries
+    @queries = Query.all
+    # USE THAT LATER
+    # @queries = current_user.queries
   end
 
   def create
