@@ -7,9 +7,6 @@
     <% if current_user %>
       <h2>Welcome to PorkCasts, <%= current_user.email %> !</h2>
       <h4>Not <%= current_user.email %>? <%= link_to "Click here", destroy_user_session_path, :method => :delete %>
-        <p>
-          <%= link_to "Cancel my account", user_registration_path(current_user), :confirm => "Are you sure?", :method => :delete %>.
-        </p>
     <% end %>
 
     <%= form_for @user do |f| %>
