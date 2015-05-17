@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Check.destroy_all
+Query.destroy_all
 
-client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
-
-response = client.get("pjb4-8ve5", {"$limit" => 1, :payee => "NICHOLAS R SCHWADERER"})
+Query.create(
+  :content => "NICHOLAS R SCHWADERER"
+  )

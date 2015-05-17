@@ -2,6 +2,7 @@ OUTSTANDING ISSUES TO RESOLVE LATER
 
 -nested query input attached to user and stored in front page form
 -autofill email category for signup/sign in if user navigated from main page form
+-currently tapping API for all query results; upscale to more robust way to store the data as opposed to multiple API hits.
 
 
 

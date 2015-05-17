@@ -1,6 +1,6 @@
 class QueriesController < ApplicationController
   def index
-
+    @queries = current_user.queries
   end
 
   def create
@@ -10,5 +10,11 @@ class QueriesController < ApplicationController
     else
       redirect_to new_user_registration_path
     end
+  end
+
+  def show
+    @query = Query.find(params[:id])
+    @credit_cards = credit_card_search(@query.content)
+    @checks = accts_payable_search(@query.content)
   end
 end
