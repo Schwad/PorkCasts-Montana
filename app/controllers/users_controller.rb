@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     if session[:editing_query]
       @query = Query.find(session[:editing_query])
       @query.content = params[:query][:content]
+      session[:editing_query] = nil
     else
       @query = Query.new(
         :content => params[:query][:content],
