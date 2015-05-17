@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   after_create :send_welcome_email
   has_many :queries
+  accepts_nested_attributes_for :queries
 
   def send_welcome_email
     UserMailer.welcome(self).deliver!
