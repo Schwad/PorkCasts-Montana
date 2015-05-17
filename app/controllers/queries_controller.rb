@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  before_action :require_current_user
+
   def index
     @user = User.find(params[:user_id])
     @queries = @user.queries

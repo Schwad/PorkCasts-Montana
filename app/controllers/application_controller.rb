@@ -20,4 +20,18 @@ class ApplicationController < ActionController::Base
   def sanitize_query(query)
     query.upcase
   end
+
+  private
+
+  def require_current_user
+    # don't forget that params is a string!!!
+    if current_user
+      unless params[:user_id] == current_user.id.to_s
+        flash[:error] = "You're not authorized to view this"
+        redirect_to root_url
+      end
+    else
+      redirect_to root_url
+    end
+  end
 end
