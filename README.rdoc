@@ -1,5 +1,5 @@
 schwad [9:09 PM]
-1. no more api hit death --> hits api on new query but not any other time.
+XXXX1. no more api hit death --> hits api on new query but not any other time.
 
 schwad [9:09 PM]
 2. service folders
@@ -24,6 +24,11 @@ COLUMNS: total checks, total cash, cash per check, biggest check
 
 schwad [9:16 PM]
 implement jquery tables into porkcast
+
+BUGS:
+  --> new error on signup button (can sign up old school)
+  --> query doesn't work on signup now. #BUGFIXED
+
 
 
 
