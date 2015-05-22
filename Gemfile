@@ -38,7 +38,6 @@ group :development do
   gem 'faker'
 end
 
-gem 'delayed_job_recurring'
 gem 'delayed_job_active_record'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

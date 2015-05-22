@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <% i = 1 %>
-        <% @checks.each do |check| %>
+        <% @query.checks.each do |check| %>
           <tr>
             <td><%= i %></td>
             <td><%= check.amount %></td>
@@ -27,7 +27,7 @@
           </tr>
         <% end %>
 
-        <% @credit_cards.each do |card| %>
+        <% @query.credit_cards.each do |card| %>
           <tr>
             <td><%= i %></td>
             <td><%= card.amount %></td>

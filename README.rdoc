@@ -1,3 +1,60 @@
+schwad [9:09 PM]
+1. no more api hit death --> hits api on new query but not any other time.
+
+schwad [9:09 PM]
+2. service folders
+  https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services
+  This blog post examines ways to wrap calls to external service calls into local service objects to simplify controller logic in Rails.
+
+schwad [9:09 PM]
+3. heroku working AS IS
+
+schwad [9:09 PM]
+4. scheduler --> https://addons.heroku.com/scheduler for when you want to schedule raketasks
+The quickest and easiest way to integrate Heroku Scheduler with your Heroku apps. Run scheduled tasks every 10 minutes, every hour, or every day.
+
+schwad [9:09 PM]
+5. premailer --> Email styling: `premailer` gem
+
+schwad [9:14 PM]
+user queries index
+
+schwad [9:15 PM]
+COLUMNS: total checks, total cash, cash per check, biggest check
+
+schwad [9:16 PM]
+implement jquery tables into porkcast
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #IF POSTGRES ERROR RUN FOLLOWING IN COMMAND: export PGHOST=localhost
 
 

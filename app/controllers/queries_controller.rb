@@ -27,7 +27,6 @@ class QueriesController < ApplicationController
   end
 
   def create
-
     @query_email = params[:query][:content]
     if @query_email.include? "@"
       if User.exists?(:email => @query_email)
@@ -39,8 +38,10 @@ class QueriesController < ApplicationController
       @query = Query.create(
         :content => @query_email
         )
+      creates_checks(@query)
+      creates_credit_cards(@query)
       flash[:success] = "Query created!"
-      redirect_to query_path(@query.id)
+      redirect_to user_query_path(@query.id)
     end
   end
 
@@ -52,8 +53,36 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find(params[:id])
-    @user = @query.user
-    @credit_cards = credit_card_search(@query)
-    @checks = accts_payable_search(@query)
+    # @user = @query.user
+    # @credit_cards = credit_card_search(@query)
+    # @checks = accts_payable_search(@query)
+  end
+
+  def creates_checks(query)
+    @checks = credit_card_search(query)
+    binding.pry
+    @checks.each do |check|
+      Check.create(
+          :query_id => query.id,
+          :payment_category => check.payment_category,
+          :department => check.deparment,
+          :amount => check.amount,
+          :payee => check.payee,
+          :payment_date => check.payment_date.to_date.strftime("%m/%d/%Y")
+        )
+    end
+  end
+
+  def creates_credit_cards(query)
+    @credit_cards = accts_payable_search(query)
+    @credit_cards.each do |credit_card|
+      CreditCard.create(
+        :query_id => query.id,
+        :department => credit_card.department,
+        :amount => credit_card.amount,
+        :merchant => credit_card.merchant,
+        :billing_date => credit_card.billing_date
+        )
+    end
   end
 end

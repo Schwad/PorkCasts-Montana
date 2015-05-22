@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-
+#make services folder; service object.
+#abstractions of business logic (aka api's).
 
   def credit_card_search(query)
     query = sanitize_query(query)

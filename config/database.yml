@@ -24,11 +24,12 @@ default: &default
 development:
  <<: *default
  database: porkcast_development
-
+ host: localhost
 
 test:
  <<: *default
  database: porkcast_test
+ host: localhost
 
 
 production:
