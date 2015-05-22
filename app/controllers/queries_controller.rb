@@ -52,7 +52,8 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find(params[:id])
-    @credit_cards = credit_card_search(@query.content)
-    @checks = accts_payable_search(@query.content)
+    @user = @query.user
+    @credit_cards = credit_card_search(@query)
+    @checks = accts_payable_search(@query)
   end
 end
