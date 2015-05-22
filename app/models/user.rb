@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   end
 
   def send_test_email
-    Usermailer.test_mailer(self).deliver!
+    UserMailer.test_mailer(self).deliver!
   end
 end
