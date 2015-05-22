@@ -11,4 +11,8 @@ class UserMailer < ApplicationMailer
   def query_match(query)
     mail(to: query.user.email, subject: 'Check written to #{query.content}')
   end
+
+  def test_mailer(user)
+    mail(to: user.email, subject: 'This is a test rake task in heroku scheduler!')
+  end
 end

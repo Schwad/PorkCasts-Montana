@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def send_welcome_email
     UserMailer.welcome(self).deliver!
   end
+
+  def send_test_email
+    Usermailer.test_mailer(self).deliver!
+  end
 end

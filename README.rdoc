@@ -2,7 +2,7 @@ schwad [9:09 PM]
 XXXX1. no more api hit death --> hits api on new query but not any other time.
 
 schwad [9:09 PM]
-3. heroku working AS IS
+XXXXX3. heroku working AS IS
 
 schwad [9:09 PM]
 4. scheduler --> https://addons.heroku.com/scheduler for when you want to schedule raketasks
