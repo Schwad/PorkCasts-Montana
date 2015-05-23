@@ -25,10 +25,15 @@ implement jquery tables into porkcast
 BUGS:
   --> new error on signup button (can sign up old school)
   --> query doesn't work on signup now. #BUGFIXED
+  --> welcome email should say query
+##############
 
-
-
-ARGANS limited
+San Shui LTD T/A SizzAll
+Spice Merchant
+The Wrigley Company Limited
+Timken ILS Ltd
+Hymec Aeospace Uk Ltd
+>>>>>>>>>>>>>>
 Beckowheel LTD T/A Yukisan Restaurant
 Burts Potato Chips Limited
 C3 Resources Ltd
@@ -40,7 +45,7 @@ GR Engineering Services (UK) Limited
 Health Education South West - Peninsula Postgraduate Medical Education
 Hemsley Fraser
 Himalayan Spice
-Hymec Aeospace Uk Ltd
+
 IDSI UK Ltd
 
 Indus Indian Takeaway T/A Indus Cuisine Limited
@@ -59,12 +64,17 @@ Plymouth University International College (PUIC)
 Plymouth University
 Plymouth Marine Laboratory
 Plymouth Community Healthcare (CIC)
-Princess Yachts International plc
-San Shui LTD T/A SizzAll
-Spice Merchant
-The Wrigley Company Limited
-Timken ILS Ltd
+
+
+Design by Matrix Ltd
+--> http://www.designbymatrix.co.uk/let-us-introduce-ourselves/
 Twofour Digital Limited
+-->takes speculative CV's
+ARGANS Ltd ; scientists studying stuff for space
+-->http://www.argans.co.uk/
+Princess Yachts International plc
+-->needs payroll person
+
 University of St Mark & St John
 Very Clever Locums Ltd TA Saltash Pharmacy
 Wolf Minerals (UK) Ltd

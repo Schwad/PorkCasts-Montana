@@ -12,6 +12,10 @@ class UserMailer < ApplicationMailer
   end
 
   def test_mailer(user)
-    mail(to: user.email, subject: 'This is a test rake task in heroku scheduler!')
+    mail(to: user.email, subject: 'This is a test rake task in heroku scheduler to #{user.email}!')
+  end
+
+  def new_payment(user, payee, amount)
+    mail(to: user.email, subject: 'PORKCAST: New Payment to #{payee} from the State of Montana in the amount of $#{amount}')
   end
 end
