@@ -1,6 +1,6 @@
 <h2>This is a test mailer! Sweet!</h2>
-<%= user.id %>
-<% user.queries.each do |query| %>
+<%= @user.id %>
+<% @user.queries.each do |query| %>
   <p><%= query.content %></p>
   <p><%= query.id %></p>
   <p><% query.checks.each do |check| %>
