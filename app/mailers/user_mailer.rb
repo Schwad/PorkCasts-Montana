@@ -18,10 +18,10 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: 'This is a test rake task in heroku scheduler to ' + @user.email)
   end
 
-  def new_payment(user, payee, amount)
+  def query_match(user, payee, amount)
     @user = user
     @payee = payee
     @amount = amount
-    mail(to: user.email, subject: 'PORKCAST: New Payment to ' +  @payee + ' from the State of Montana in the amount of $' + @amount)
+    mail(to: @user.email, subject: 'PORKCAST: New Payment to ' +  @payee + ' from the State of Montana in the amount of $' + @amount.to_s)
   end
 end

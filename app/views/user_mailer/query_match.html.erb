@@ -2,6 +2,6 @@
 <br>
 
 
-<h3><p>On <%= Date.today %> the State of Montana published information showing they sent a new payment to <%= query.content %> ! Go to the main PorkCasts website to check it out!</p></h3>
+<h3><p>On <%= Date.today %> the State of Montana published information showing they sent a new payment to <%= @payee %> for <%= @amount %> ! Go to the main PorkCasts website to check it out!</p></h3>
 
-<p><em>This email was sent to <%= query.user.email %>. Not <%= query.user.email %>? <a href="#">Click here to report or unsubscribe</a></em></p>
+<p><em>This email was sent to <%= @user.email %>. Not <%= @user.email %>? <a href="#">Click here to report or unsubscribe</a></em></p>
