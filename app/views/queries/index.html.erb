@@ -11,7 +11,7 @@
         <th>List all Payments</th>
         <th>Date Queried</th>
         <th>Total Paid</th>
-        <th>Total Number of Checks</th>
+        <th>Total Number of Payments</th>
         <th>Average Payment</th>
         <th>Largest Payment</th>
         <th>Remove</th>
@@ -24,14 +24,14 @@
             <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
             <td><%= link_to "Show Payments", user_query_path(@user.id, query.id) %></td>
             <td><%= query.created_at.strftime("%m/%d/%Y") %></td>
-            <td><%= "$" + query.payment_sum.round(2).to_s %></td>
+            <td><%= "$" + number_with_precision(query.payment_sum, :precision => 2, :delimiter => ',').to_s %></td>
             <td><%= query.checks.count %></td>
             <td><% if query.checks.count == 0 && query.credit_cards.count == 0 %>
               <%= 0 %>
               <% else %>
-              <%= "$" + (query.payment_sum / (query.checks.count + query.credit_cards.count)).round(2).to_s %>
+              <%= "$" + number_with_precision(query.payment_sum / (query.checks.count + query.credit_cards.count), :precision => 2, :delimiter => ',').to_s %>
               <% end %></td>
-            <td><%= "$" + query.largest_payment.round(2).to_s %></td>
+            <td><%= "$" + number_with_precision(query.largest_payment, :precision => 2, :delimiter => ',').to_s %></td>
             <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete %></td>
             <% i += 1 %>
           <% end %>
