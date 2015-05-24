@@ -12,7 +12,7 @@ class Query < ActiveRecord::Base
     end
     self.credit_cards.each do |credit_card|
       if credit_card.amount
-        @total += check.amount
+        @total += credit_card.amount
       end
     end
     return @total
