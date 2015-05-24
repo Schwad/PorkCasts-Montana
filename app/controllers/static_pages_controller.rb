@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def index
+    if current_user
+      redirect_to user_queries_path(current_user.id)
+    end
     @new_query = nil
     if session[:new_user_query]
       @new_query = Query.create(
