@@ -17,8 +17,19 @@ task :send_reminders => :environment do
 end
 
 task :daily_api_check => :environment do
-  Query.all.each do |query|
-    checks_checks(query)
-    checks_credit_cards(query)
+  # @start_time = Time.now
+  puts "starting daily API check at #{Time.now}"
+  User.all.each do |user|
+    puts 'Now querying for ' + user.email + '.....'
+     user.queries.each do |query|
+      puts user.email + ' checking for new payments to ' + query.content + '.....'
+      checks_checks(query)
+      checks_credit_cards(query)
+    end
   end
+  # @finish_time = Time.now
+  # @work = @finish_time - @start_time
+  # DailyRakeLog.create(
+  #   :todays_work_time => @work
+  #   )
 end
