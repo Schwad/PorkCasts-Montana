@@ -19,7 +19,7 @@
       <tbody>
         <% i = 1 %>
         <% @queries.each do |query| %>
-          <tr>
+          <tr class="pork-row">
             <td><%= i %></td>
             <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
             <td><%= link_to "Show Payments", user_query_path(@user.id, query.id) %></td>

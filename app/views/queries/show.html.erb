@@ -16,7 +16,7 @@
       <tbody>
         <% i = 1 %>
         <% @query.checks.each do |check| %>
-          <tr>
+          <tr class="pork-row">
             <td><%= i %></td>
             <td><%= check.amount %></td>
             <td><%= check.payment_date.to_date.strftime("%m/%d/%Y") %></td>
@@ -28,7 +28,7 @@
         <% end %>
 
         <% @query.credit_cards.each do |card| %>
-          <tr>
+          <tr class="pork-row">
             <td><%= i %></td>
             <td><%= card.amount %></td>
             <td><%= card.billing_date %></td>
