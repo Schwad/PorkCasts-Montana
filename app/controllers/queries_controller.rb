@@ -1,6 +1,7 @@
 class QueriesController < ApplicationController
   before_action :require_current_user
-
+  require "#{Rails.root}/app/helpers/application_helper"
+  include ApplicationHelper
   def index
     @user = User.find(params[:user_id])
     @queries = @user.queries
@@ -53,36 +54,7 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find(params[:id])
-    # @user = @query.user
-    # @credit_cards = credit_card_search(@query)
-    # @checks = accts_payable_search(@query)
   end
 
-  def creates_checks(query)
-    @checks = credit_card_search(query)
-    binding.pry
-    @checks.each do |check|
-      Check.create(
-          :query_id => query.id,
-          :payment_category => check.payment_category,
-          :department => check.deparment,
-          :amount => check.amount,
-          :payee => check.payee,
-          :payment_date => check.payment_date.to_date.strftime("%m/%d/%Y")
-        )
-    end
-  end
 
-  def creates_credit_cards(query)
-    @credit_cards = accts_payable_search(query)
-    @credit_cards.each do |credit_card|
-      CreditCard.create(
-        :query_id => query.id,
-        :department => credit_card.department,
-        :amount => credit_card.amount,
-        :merchant => credit_card.merchant,
-        :billing_date => credit_card.billing_date
-        )
-    end
-  end
 end

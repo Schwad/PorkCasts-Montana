@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+  def fuzzy_match(query, string)
+    query = query.upcase.strip
+    string = string.upcase.strip
+    if string == query
+      true
+    else
+      false
+    end
+  end
+
   def checks_checks(query)
     @possible_checks = []
     @checks = accts_payable_search(query)
@@ -87,5 +97,44 @@ module ApplicationHelper
 
   def sanitize_query(query)
     query.content.upcase
+  end
+
+  def creates_checks(query)
+    @checks = accts_payable_search(query)
+    @checks.each do |check|
+      Check.create(
+          :query_id => query.id,
+          :payment_category => check.payment_category,
+          :department => check.department,
+          :amount => check.amount,
+          :payee => check.payee,
+          :payment_date => check.payment_date
+        )
+    end
+  end
+
+  def creates_credit_cards(query)
+    @credit_cards = credit_card_search(query)
+    @credit_cards.each do |credit_card|
+      CreditCard.create(
+        :query_id => query.id,
+        :department => credit_card.department,
+        :amount => credit_card.amount,
+        :merchant => credit_card.merchant,
+        :billing_date => credit_card.billing_date
+        )
+    end
+  end
+
+  def credit_card_search(query)
+    query = sanitize_query(query)
+    client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
+    return client.get("dvui-wnnh", {:merchant => "#{query}"})
+  end
+
+  def accts_payable_search(query)
+     query = sanitize_query(query)
+     client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
+     return client.get("pjb4-8ve5", {:payee => "#{query}"})
   end
 end
