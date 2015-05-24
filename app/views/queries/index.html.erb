@@ -10,7 +10,6 @@
         <th>Payee</th>
         <th>Date Queried</th>
         <th>Remove</th>
-        <th>Edit</th>
       </thead>
       <tbody>
         <% i = 1 %>
@@ -20,7 +19,6 @@
             <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
             <td><%= query.created_at.strftime("%m/%d/%Y") %></td>
             <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete %></td>
-            <td><%= link_to "edit query", edit_user_query_path(@user.id, query.id) %></td>
             <% i += 1 %>
           <% end %>
         </tr>
