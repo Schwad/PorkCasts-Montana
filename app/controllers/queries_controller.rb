@@ -64,10 +64,11 @@ class QueriesController < ApplicationController
       @query.opt_out_email = true
     end
     @query.save
-    redirect_to user_queries_path(params[:user_id])
-    # respond_to do |format|
-    #   format.js {}
-    # end
+    respond_to do |format|
+      format.html { redirect_to user_queries_path(query.user.id) }
+      format.js {}
+
+    end
   end
 
 
