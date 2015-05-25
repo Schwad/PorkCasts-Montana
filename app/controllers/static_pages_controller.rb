@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   require "#{Rails.root}/app/helpers/application_helper"
   include ApplicationHelper
   def index
+    max_attributes_json
     if current_user
       redirect_to user_queries_path(current_user.id)
     end
@@ -23,9 +24,9 @@ class StaticPagesController < ApplicationController
   end
 
   def update
-    jkljlkjlkj
-    binding.pry
 
   end
+
+
 end
 

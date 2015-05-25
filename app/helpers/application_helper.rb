@@ -137,4 +137,12 @@ module ApplicationHelper
      client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
      return client.get("pjb4-8ve5", {:payee => "#{query}"})
   end
+
+  def max_attributes_json
+    puts "now setting max stuff"
+    @max_checks = HTTParty.get "https://data.datamontana.us/resource/pjb4-8ve5.json?$where=amount>10000000"
+    @max_cards = HTTParty.get "https://data.datamontana.us/resource/dvui-wnnh.json?$where=amount>100000"
+     @max_cards.sort! { |a,b| a["amount"] <=> b["amount"] }
+     @max_checks.sort! { |a,b| a["amount"] <=> b["amount"] }
+  end
 end

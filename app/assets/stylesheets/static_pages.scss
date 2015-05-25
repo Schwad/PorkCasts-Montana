@@ -14,3 +14,10 @@ text-align: center;
 tr:hover {
   background-color: #91E6B3;
 }
+
+.front-page {
+  height:400px;
+  overflow:auto;
+  border: 2px solid black;
+  border-radius: 5px;
+}
