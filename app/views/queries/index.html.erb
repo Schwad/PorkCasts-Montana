@@ -15,10 +15,11 @@
         <th>Average Payment</th>
         <th>Largest Payment</th>
         <th>Remove</th>
+        <th>No Emails Please</th>
       </thead>
       <tbody>
         <% i = 1 %>
-        <% @queries.each do |query| %>
+        <% @queries.order("id ASC").each do |query| %>
           <tr class="pork-row">
             <td><%= i %></td>
             <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
@@ -33,11 +34,12 @@
               <% end %></td>
             <td><%= "$" + number_with_precision(query.largest_payment, :precision => 2, :delimiter => ',').to_s %></td>
             <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete %></td>
+
+            <td><% if query.opt_out_email == false %><%= link_to "Opt Out Email", user_query_path(@user.id, query.id), :method => :put %><% else %><%= link_to "Opt In Email", user_query_path(@user.id, query.id), :method => :put %><% end %></td>
             <% i += 1 %>
           <% end %>
         </tr>
       </tbody>
-
     </table>
   </div>
 

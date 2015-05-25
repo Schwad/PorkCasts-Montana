@@ -21,5 +21,11 @@ class StaticPagesController < ApplicationController
       creates_credit_cards(@new_query)
     end
   end
+
+  def update
+    jkljlkjlkj
+    binding.pry
+
+  end
 end
 
