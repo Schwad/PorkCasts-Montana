@@ -65,7 +65,7 @@ class QueriesController < ApplicationController
     end
     @query.save
     respond_to do |format|
-      format.html { redirect_to user_queries_path(query.user.id) }
+      format.html { redirect_to user_queries_path(@query.user.id) }
       format.js {}
 
     end
