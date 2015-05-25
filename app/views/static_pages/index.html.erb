@@ -15,8 +15,8 @@
       <p class="line-one">Enter your email to get your PorkCasts!</p>
       <%= f.text_field :email, :placeholder => "bob@gmail.com" %>
       <br>
-      <p class="line-two">Get a PorkCast whenever the state writes a check to...</p>
       <br>
+      <p class="line-two">Get a PorkCast whenever the state writes a check to...</p>
       <%= fields_for @query do |query_fields| %>
         <%= query_fields.text_field :content, :placeholder => "Walmart" %>
       <% end %>
