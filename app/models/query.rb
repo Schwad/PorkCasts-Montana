@@ -32,4 +32,30 @@ class Query < ActiveRecord::Base
     end
     return @largest
   end
+
+  def checks_by_day
+    @array_of_data = []
+    @array_of_moneys = []
+    @array_of_dates = []
+    self.checks.each do |check|
+      @array_of_dates << check.payment_date.to_date
+      @array_of_moneys << check.amount
+    end
+    @array_of_data << @array_of_dates
+    @array_of_data << @array_of_moneys
+    return @array_of_data
+  end
+
+  def cards_by_day
+    @array_of_data = []
+    @array_of_moneys = []
+    @array_of_dates = []
+    self.credit_cards.each do |card|
+      @array_of_dates << card.billing_date.to_date
+      @array_of_moneys << card.amount
+    end
+    @array_of_data << @array_of_dates
+    @array_of_data << @array_of_moneys
+    return @array_of_data
+  end
 end

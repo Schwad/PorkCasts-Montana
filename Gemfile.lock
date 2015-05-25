@@ -109,6 +109,8 @@ GEM
       diff-lcs (>= 1.1.2)
       mime-types (>= 1.15)
     hashie (3.4.1)
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     hirb (0.7.3)
     httparty (0.13.3)
       json (~> 1.8)
@@ -259,6 +261,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   faker
+  highcharts-rails (~> 3.0.0)
   hirb
   httparty
   jazz_hands!

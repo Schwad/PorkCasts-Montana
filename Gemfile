@@ -37,7 +37,7 @@ group :development do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'faker'
 end
-
+gem "highcharts-rails", "~> 3.0.0"
 gem 'httparty'
 gem 'delayed_job_active_record'
 gem 'bootstrap-sass', '~> 3.2.0'

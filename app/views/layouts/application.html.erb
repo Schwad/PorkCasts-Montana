@@ -7,6 +7,43 @@
   <%= stylesheet_link_tag    '//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" %>
   <%= csrf_meta_tags %>
+   <script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+    <script type="text/javascript">
+      google.setOnLoadCallback(drawChart);
+      <% if @query %>
+     <% @answers = @query.checks_by_day %>
+     <% @chanswers = @query.cards_by_day %>
+      <% i = 0 %>
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Checks'],
+
+          <%  while i < @answers[0].length %>
+              [<%= i %>,  <%= @answers[1][i] %>],
+              <% i += 1 %>
+            <% end %>
+          <% end %>
+        ]);
+
+        var options = {
+          title: 'Checks Over Time',
+          curveType: 'function',
+          legend: { position: 'left' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 <body>
   <%= render partial: "layouts/navbar" %>
