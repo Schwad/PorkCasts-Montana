@@ -1,20 +1,27 @@
 <div class="row">
   <div class="col-md-12"><h1>PorkCasts</h1></div>
 </div>
+<br>
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-8 center-stuff">
     <% if current_user %>
       <h2>Welcome to PorkCasts, <%= current_user.email %> !</h2>
       <h4>Not <%= current_user.email %>? <%= link_to "Click here", destroy_user_session_path, :method => :delete %>
     <% end %>
 
     <%= form_for @user do |f| %>
-      <%= f.text_field :email %>
+      <p class="line-one">Enter your email to get your PorkCasts!</p>
+      <%= f.text_field :email, :placeholder => "bob@gmail.com" %>
+      <br>
+      <p class="line-two">Get a PorkCast whenever the state writes a check to...</p>
       <%= fields_for @query do |query_fields| %>
-        <%= query_fields.text_field :content %>
+        <%= query_fields.text_field :content, :placeholder => "Walmart" %>
       <% end %>
-      <%= f.submit "PorkCast!" %>
+      <br><br>
+      <div class="porkcast-click">
+        <%= f.submit "PorkCast!" %>
+      </div>
     <% end %>
     </div>
   <div class="col-md-2"></div>
