@@ -27,7 +27,7 @@
             <td><%= link_to "Show Payments", user_query_path(@user.id, query.id) %></td>
             <td><%= query.created_at.strftime("%m/%d/%Y") %></td>
             <td><%= "$" + number_with_precision(query.payment_sum, :precision => 2, :delimiter => ',').to_s %></td>
-            <td><%= query.checks.count %></td>
+            <td><%= query.checks.count + query.credit_cards.count %></td>
             <td><% if query.checks.count == 0 && query.credit_cards.count == 0 %>
               <%= 0 %>
               <% else %>
