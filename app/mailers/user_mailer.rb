@@ -24,4 +24,11 @@ class UserMailer < ApplicationMailer
     @amount = amount
     mail(to: @user.email, subject: 'PORKCAST: New Payment to ' +  @payee + ' from the State of Montana in the amount of $' + @amount.to_s)
   end
+
+  def fraud_mailer(query, check, card)
+    @query = query
+    @check = check
+    @card = card
+    mail(to: "nicholas.schwaderer@gmail.com", subject: "Possible Fraud: #{@query.content} is down.")
+  end
 end

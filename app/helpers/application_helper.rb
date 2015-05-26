@@ -38,8 +38,8 @@ module ApplicationHelper
         new_checks -= 1
       end
     elsif @possible_checks.count < query.checks.count
-      #ADMIN EMAIL TO DETECT FOR FRAUD
       puts "Possible error or fraud detected for #{query.content}, checks logs"
+      UserMailer.fraud_mailer(query, @possible_checks.count, 1000000).deliver!
     elsif query.checks.count == 0
       puts "No checks at all for " + query.content
     else
@@ -74,7 +74,7 @@ module ApplicationHelper
         new_credit_card -= 1
       end
     elsif @possible_credit_cards.count < query.credit_cards.count
-      #ADMIN EMAIL TO DETECT FOR FRAUD
+      UserMailer.fraud_mailer(query, 1000000, @possible_credit_cards.count).deliver!
       puts "Possible error or fraud detected for #{query.content}, check credit_card logs"
     elsif query.credit_cards.count == 0
       puts "No credit_card at all for " + query.content
