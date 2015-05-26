@@ -70,6 +70,4 @@ class QueriesController < ApplicationController
 
     end
   end
-
-
 end
