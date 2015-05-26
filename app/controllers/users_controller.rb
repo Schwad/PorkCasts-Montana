@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       creates_checks(@query)
       creates_credit_cards(@query)
     end
-      redirect_to user_queries_path(current_user.id)
+      redirect_to user_query_path(current_user.id, @query.id)
   end
 
 

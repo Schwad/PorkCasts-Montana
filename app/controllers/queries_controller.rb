@@ -18,7 +18,7 @@ class QueriesController < ApplicationController
     @query = Query.find(params[:id])
     @query.content = params[:query][:content]
     @query.save
-    redirect_to queries_path
+    redirect_to user_query_path(@query.id)
   end
 
   def new
