@@ -22,7 +22,7 @@
       <tbody>
         <% i = 1 %>
         <% @queries.order("id ASC").each do |query| %>
-          <tr class="pork-row">
+          <tr class="pork-row" id="query-<%=query.id%>">
             <td><%= i %></td>
             <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
             <td><%= link_to "Show Payments", user_query_path(@user.id, query.id) %></td>
@@ -35,7 +35,7 @@
               <%= "$" + number_with_precision(query.payment_sum / (query.checks.count + query.credit_cards.count), :precision => 2, :delimiter => ',').to_s %>
               <% end %></td>
             <td><%= "$" + number_with_precision(query.largest_payment, :precision => 2, :delimiter => ',').to_s %></td>
-            <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete %></td>
+            <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete, :remote => true %></td>
             <td><% if query.opt_out_email == false %>Yes<% else %>No<% end %></td>
             <td><% if query.opt_out_email == false %><%= link_to "Opt Out Email", user_query_path(@user.id, query.id), :method => :put  %><% else %><%= link_to "Opt In Email", user_query_path(@user.id, query.id), :method => :put  %><% end %></td>
             <% i += 1 %>

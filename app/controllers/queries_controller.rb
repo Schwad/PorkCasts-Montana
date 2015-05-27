@@ -48,8 +48,12 @@ class QueriesController < ApplicationController
 
   def destroy
     @query = Query.find(params[:id])
+    @save_query = @query.id
     @query.destroy
-    redirect_to user_queries_path(current_user.id)
+    respond_to do |format|
+      format.js {}
+    end
+
   end
 
   def show
