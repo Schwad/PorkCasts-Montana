@@ -18,9 +18,11 @@ task :daily_api_check => :environment do
   User.all.each do |user|
     puts 'Now querying for ' + user.email + '.....'
      user.queries.each do |query|
-      puts user.email + ' checking for new payments to ' + query.content + '.....'
-      checks_checks(query)
-      checks_credit_cards(query)
+      if query.opt_out_email == false
+        puts user.email + ' checking for new payments to ' + query.content + '.....'
+        checks_checks(query)
+        checks_credit_cards(query)
+      end
     end
   end
 end
