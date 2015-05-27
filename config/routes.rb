@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root "static_pages#index"
   get "static_pages/about", :as => 'about_page'
+  get "static_pages/shared", :as => 'shared_page'
   resources :users do
     resources :queries
   end

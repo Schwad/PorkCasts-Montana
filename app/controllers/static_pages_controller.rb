@@ -23,6 +23,16 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def shared
+    @query = Query.create(
+        :content => params[:format]
+        )
+    creates_checks(@query)
+    creates_credit_cards(@query)
+    @query.save
+
+  end
+
   def about
 
   end
