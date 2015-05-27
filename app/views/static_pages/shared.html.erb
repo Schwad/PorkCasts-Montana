@@ -1,7 +1,7 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <div class="page-wrap">
 <div class = "row" >
-  <div style="margin-bottom:-10px;"><h2 style="text-align: center; margin-bottom:-5px;">Payments to <%= @query.content %></h2><%= social_share_button_tag(@query.content, :url => "http://localhost:3000/static_pages/shared/content/#{@query.content}") %></div>
+  <div style="margin-bottom:-10px;"><h2 style="text-align: center; margin-bottom:-5px;">Payments to <%= @query.content %></h2><%= social_share_button_tag("See payments Montana has made to #{@query.content}", :url => shared_page_path(@query.content)) %></div>
 </div>
 <br><br>
 <h3>Share: <%= link_to "share", shared_page_path(@query.content) %></h3>

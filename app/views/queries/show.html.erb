@@ -1,10 +1,13 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <div class="page-wrap">
 <div class = "row" >
-  <div style="margin-bottom:-10px;"><h2 style="text-align: center; margin-bottom:-5px;">Payments to <%= @query.content %></h2><%= social_share_button_tag(@query.content, :url => "http://localhost:3000/static_pages/shared/content/#{@query.content}") %></div>
+  <% my_link = shared_page_path(@query.content) %>
+
+  <div style="margin-bottom:-20px;"><h2 style="text-align: center; margin-bottom:-25px;">Payments to <%= @query.content %></h2></div>
 </div>
 <br><br>
-<h3>Share: <%= link_to "share", shared_page_path(@query.content) %></h3>
+<h3 style="margin-top:-20px; margin-left:12px;">Share with this link: </h3>
+  <div style="margin-left:15px; border: 2px solid black; border-radius: 4px; width: 368px;"><%= text_field_tag(:q, "porkcast.herokuapp.com#{my_link}",size: 50) %></div>
 <div class = "row">
   <div class = "col-md-4">
     <div class = "row">
