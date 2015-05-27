@@ -1,15 +1,22 @@
+<div class="page-wrap">
 <div class = "row">
   <div class = "col-md-12">
+    <br><br><br><br><br>
    <h1> Create new query</h1>
   </div>
 </div>
 <div class = "row">
   <div class = "col-md-12">
+    <br>
+    <div style="margin-left:520px">
    <%= form_for @user do |f| %>
       <%= fields_for @query do |query_fields| %>
-        <%= query_fields.text_field :content %>
+        <%= query_fields.text_field :content, :placeholder => "e.g. Staples" %>
       <% end %>
+      <br><br>
       <%= f.submit "Create New PorkCast!" %>
     <% end %>
+    </div>
   </div>
+</div>
 </div>
