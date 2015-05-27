@@ -62,16 +62,17 @@ class QueriesController < ApplicationController
 
   def update
     @query = Query.find(params["id"])
+    @user = User.find(@query.user_id)
+
     if @query.opt_out_email == true
       @query.opt_out_email = false
     else
       @query.opt_out_email = true
     end
     @query.save
+    @query = Query.find(params["id"])
     respond_to do |format|
-      format.html { redirect_to user_queries_path(@query.user.id) }
       format.js {}
-
     end
   end
 end
