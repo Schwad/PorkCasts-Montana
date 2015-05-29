@@ -2,6 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+p.notice {
+  width: 100%;
+  text-align:center;
+  font-weight: bold;
+  background-color:#e6efc2;
+  color:#264409;
+  border-color:#c6d880;
+  margin-bottom: -9px;
+  font-size:120%;
+   animation:notice 0.5s 1;
+    -webkit-animation:notice 0.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay:2s;
+    -webkit-animation-delay:1s;
+    -webkit-animation-fill-mode: forwards;
+}
+@keyframes notice{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+@-webkit-keyframes notice{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+.devise-error{
+  margin-left:-220px;
+  font-weight: bold;
+  color:#264409;
+  border-color:#c6d880;
+}
+
+p.alert {
+  width: 100%;
+  text-align:center;
+  font-weight: bold;
+  color:#264409;
+  font-size:120%;
+   animation:notice 0.5s 1;
+  -webkit-animation:notice 0.5s 1;
+  animation-fill-mode: forwards;
+  animation-delay:2s;
+  -webkit-animation-delay:1s;
+  -webkit-animation-fill-mode: forwards;
+}
 
 body
 {

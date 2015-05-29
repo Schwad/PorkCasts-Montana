@@ -12,7 +12,11 @@
 <body>
   <%= render partial: "layouts/navbar" %>
   <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
+ <% if alert %>
+   <p class="alert", style="background-color:#FF9999; margin-bottom: 50px;"><%= alert %></p>
+ <% else %>
+   <p class="alert"><%= alert %></p>
+ <% end %>
   <div class="container main-container">
     <%= yield %>
   </div>
