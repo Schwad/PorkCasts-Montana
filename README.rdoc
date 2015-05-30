@@ -6,7 +6,6 @@ Alright, well if you want to investigate *now*, we will also show you any check 
 
 
 -->create help supportporkcast@gmail.com
---> "graphs not loading? try refreshing the page" on show page
 -->Explanation of api and 4 months back and refreshing only monthly. include email address for governor to speed it up.
 
 

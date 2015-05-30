@@ -1,5 +1,5 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-<div class="graph-popup">Graphs show where the money has been spent</div>
+<div class="graph-popup hover-schwad">Graphs show where the money has been spent</div>
 <div class="page-wrap">
 <div class = "row">
   <div class = "col-md-4">
@@ -10,10 +10,11 @@
         <br><br>
         <h3 style="margin-top:-20px; margin-left:12px;">Share with this link: </h3>
           <div style="margin-left:15px; border: 2px solid black; border-radius: 4px; width: 368px;"><%= text_field_tag(:q, "porkcast.herokuapp.com#{my_link}",size: 50) %></div>
-
-        <div id="curve_chart" style="height: 242px; border-radius: 4px; overflow:auto;">
-          <h3 style="text-align: center;">Checks by Category</h3>
-          <%= pie_chart @query.checks.group(:payment_category).count, height: "175px" %>
+        <div class="graph-hold">
+          <div id="curve_chart" style="height: 242px; border-radius: 4px; overflow:auto;">
+            <h3 style="text-align: center;">Checks by Category</h3>
+            <%= pie_chart @query.checks.group(:payment_category).count, height: "175px" %>
+          </div>
         </div>
       </div>
     </div>
