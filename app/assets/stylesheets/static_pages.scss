@@ -25,13 +25,15 @@
 }
 
 p.notice {
+  z-index: 500;
+  margin-top: -16px;
+  position: absolute;
   width: 100%;
   text-align:center;
   font-weight: bold;
   background-color:#e6efc2;
   color:#264409;
   border-color:#c6d880;
-  margin-bottom: -9px;
   font-size:120%;
    animation:notice 0.5s 1;
     -webkit-animation:notice 0.5s 1;
@@ -95,6 +97,8 @@ div.scroll-down {
 }
 
 p.alert {
+  z-index: 500;
+  position: absolute;
   width: 100%;
   text-align:center;
   font-weight: bold;
@@ -126,7 +130,7 @@ text-align: center;
 }
 
 .front-page {
-  height:260px;
+  height:290px;
   overflow:auto;
   border: 2px solid black;
   border-radius: 5px;
@@ -156,9 +160,9 @@ text-align: center;
   opacity: 0.95;
   box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.63);
   margin-left:-30px;
-  margin-top: -22px;
+  margin-top:23px;
   width:1200px;
-  height: 620px;
+  height: 616px;
 }
 
 .about-text {
@@ -189,6 +193,7 @@ text-align: center;
   border: 2px solid black;
   border-radius: 8px;
   padding-bottom: 17px;
+  margin-top: 37px;
   box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.63);
 }
 
