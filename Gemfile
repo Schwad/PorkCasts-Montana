@@ -18,6 +18,7 @@ gem "chartkick"
 gem 'pg'
 gem 'taps'
 gem 'devise'
+gem 'newrelic_rpm'
 gem 'soda-ruby', :require => 'soda'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
