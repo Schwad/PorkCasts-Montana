@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   require "#{Rails.root}/app/helpers/application_helper"
-  GLOBAL_HASH = sets_hashtable
-  GLOBAL_ARRAY = sets_brute_array
+
 
 #make services folder; service object.
 #abstractions of business logic (aka api's).
@@ -25,7 +24,14 @@ class ApplicationController < ActionController::Base
     query.content.upcase
   end
 
+  def what
+    return "hi"
+  end
+
   private
+
+
+
 
   def require_current_user
     # don't forget that params is a string!!!

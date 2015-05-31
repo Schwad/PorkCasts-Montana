@@ -2,12 +2,15 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module PorkCasts
   class Application < Rails::Application
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,6 +24,21 @@ module PorkCasts
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    def sets_hashtable
+      file = File.read('app/assets/hashtable.json')
+      data = JSON.parse(file)
+      return data
+    end
+
+    def sets_brute_array
+      file = File.read('app/assets/purearray.json')
+      data = JSON.parse(file)
+      return data
+    end
+    @my_variable = Hash.new
+    @my_variable["hashtable"] = sets_hashtable
+    @my_variable["array"] = sets_brute_array
+    config.my_config = @my_variable
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
