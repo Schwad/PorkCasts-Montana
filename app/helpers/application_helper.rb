@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  def sets_hashtable
+    file = File.read('app/assets/hashtable.json')
+    data = JSON.parse(file)
+    return data
+  end
+
+  def sets_brute_array
+    file = File.read('app/assets/purearray.json')
+    data = JSON.parse(file)
+    return data
+  end
+
   def fuzzy_match(query, string)
     query = query.upcase.strip
     string = string.upcase.strip

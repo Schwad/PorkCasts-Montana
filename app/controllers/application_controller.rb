@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  require "#{Rails.root}/app/helpers/application_helper"
+  GLOBAL_HASH = sets_hashtable
+  GLOBAL_ARRAY = sets_brute_array
 
 #make services folder; service object.
 #abstractions of business logic (aka api's).
