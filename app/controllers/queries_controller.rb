@@ -1,4 +1,9 @@
 class QueriesController < ApplicationController
+
+
+  #Rails.application.config.my_config["hashtable"]["A"]
+  #Rails.application.config.my_config["array"]
+
   before_action :require_current_user
   require "#{Rails.root}/app/helpers/application_helper"
   include ApplicationHelper

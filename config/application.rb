@@ -33,6 +33,7 @@ module PorkCasts
     def sets_brute_array
       file = File.read('app/assets/purearray.json')
       data = JSON.parse(file)
+      data.map!(&:upcase)
       return data
     end
     @my_variable = Hash.new

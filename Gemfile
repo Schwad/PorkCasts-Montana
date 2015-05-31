@@ -16,6 +16,7 @@ gem 'social-share-button'
 gem 'groupdate'
 gem "chartkick"
 gem 'pg'
+gem 'jquery-ui-rails'
 gem 'taps'
 gem 'devise'
 gem 'newrelic_rpm'

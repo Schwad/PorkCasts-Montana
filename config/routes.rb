@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :queries
   end
+  resources :tags
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
