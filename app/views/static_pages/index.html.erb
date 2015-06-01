@@ -4,7 +4,7 @@
     console.log("click!");
   });
   $(window).keyup(function() {
-    $(".match-big").html("");
+    $(".match-bigg").html("");
     $(".match-second").html("");
     var myData = $("#query_content").val();
     $.ajax( {
@@ -17,7 +17,7 @@
         var myIterator = 1;
           json.forEach(function(tag){
             if(myIterator < 6){
-              $(".match-big").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
+              $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
               myIterator++;
               console.log(myIterator);
             } else if(myIterator < 12){
@@ -46,7 +46,7 @@
 <div class="row">
   <div class="col-md-2">
 
-    <div class="match-big" style="text-align:center; width: 250px;z-index: 1000;position:absolute;margin-left:73px;margin-top:-54px;"></div>
+    <div class="match-bigg" style="text-align:center; width: 250px;z-index: 1000;position:absolute;margin-left:73px;margin-top:-54px;"></div>
     <div class="match-second" style="text-align:center; width: 250px;z-index: 1100;position:absolute;margin-left:833px;margin-top:-54px;"></div>
   </div>
   <div class="col-md-8 center-stuff">
@@ -56,11 +56,11 @@
     <% end %>
 
     <%= form_for @user do |f| %>
-      <p class="line-one">Enter your email to get your PorkCasts!</p>
+      <p class="line-one"><strong>Enter your email to get your PorkCasts!</strong></p>
       <%= f.text_field :email, :placeholder => "bob@gmail.com" %>
       <br>
       <br>
-      <p class="line-two">Get a PorkCast whenever the state writes a check to...</p>
+      <p class="line-two"><strong>Get a PorkCast whenever the state writes a check to...</strong></p>
       <%= fields_for @query do |query_fields| %>
         <%= query_fields.text_field :content, :placeholder => "Walmart" %>
       <% end %>
