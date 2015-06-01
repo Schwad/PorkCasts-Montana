@@ -21,7 +21,7 @@
   <div class = "col-md-6">
     <br>
     <div class="helper-wrapper">
-      <div class="possible-match" style="text-decoration:underline">SEARCH HELPER</div>
+      <div style="text-decoration:underline">SEARCH HELPER</div>
       <div class="match-big" style="text-align:center; width: 250px; margin-right:300px;"></div>
     <div>
   </div>
@@ -35,11 +35,16 @@
     console.log("click!");
   });
 
-  $(".page-wrap").append("<div class='load-animation'>" +  + "</div>");
-  var js_array = [<%= raw @object.to_json %>];
   $(window).keyup(function() {
-    $(".match-big").html("");
+    $(".match-big").html("<div class='possible-match'>Test thingy</div>");
     var myData = $("#query_content").val();
+
+   $("div.possible-match").click(function(){
+      $this = this
+      console.log($this.textContent);
+      $("#query_content").val($this.textContent);
+      console.log("click!");
+    });
     $.ajax( {
       url: "http://porkcast.herokuapp.com/tags.json",
       data: { value: myData },
@@ -63,11 +68,5 @@
     });
   });
 
-  $(".match-big div.possible-match").click(function(){
-    console.log($(this).text);
-    var mySelection = $(this).text;
-    $("#query_content").val(mySelection);
-    console.log("click!");
-  });
 
 <% end %>
