@@ -54,12 +54,12 @@
               myIterator++;
               console.log(myIterator);
             }
-            $("body .possible-match").click(function(){
-              $this = this;
-              console.log($this.textContent);
-              $("#query_content").val($this.textContent);
-              console.log("click!");
-            });
+          });
+          $("body .possible-match").click(function(){
+            $this = this;
+            console.log($this.textContent);
+            $("#query_content").val($this.textContent);
+            console.log("click!");
           });
         }
        },
