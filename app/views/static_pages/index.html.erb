@@ -22,12 +22,6 @@
               myIterator++;
             }
           });
-          $("body .possible-match").click(function(){
-            $this = this;
-            console.log($this.textContent);
-            $("#query_content").val($this.textContent);
-            console.log("click!");
-          });
         }
        },
       error: function( xhr, status, errorThrown ) { console.log("error!"); },
