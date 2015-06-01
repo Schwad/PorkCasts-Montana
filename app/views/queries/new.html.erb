@@ -35,10 +35,7 @@
     console.log("click!");
   });
 
-  $("body .possible-match").click(function(){
-    $("#query_content").val() = $(this).text;
-    console.log("click!");
-  });
+
 
   $(".page-wrap").append("<div class='load-animation'>" +  + "</div>");
   var js_array = [<%= raw @object.to_json %>];
@@ -65,6 +62,11 @@
       error: function( xhr, status, errorThrown ) { console.log("error!"); },
       complete: function( xhr, status ) { console.log("complete!"); }
     });
+  });
+
+  $("body .possible-match").click(function(){
+    $("#query_content").val() = $(this).text;
+    console.log("click!");
   });
 
 <% end %>
