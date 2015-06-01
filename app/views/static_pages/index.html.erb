@@ -4,7 +4,7 @@
     console.log("click!");
   });
   $(window).keyup(function() {
-    $(".match-bigg").html("");
+    $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + "Possible Matches" + "</div>");
     $(".match-second").html("");
     var myData = $("#query_content").val();
     $.ajax( {
@@ -15,7 +15,6 @@
       success: function( json ) {
         if($("#query_content").val().length > 2) {
         var myIterator = 1;
-          $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + "Possible Matches" + "</div>");
           json.forEach(function(tag){
             if(myIterator < 5){
               $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
