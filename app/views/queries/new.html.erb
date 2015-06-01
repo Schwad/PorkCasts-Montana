@@ -63,8 +63,8 @@
     });
   });
 
-  $("body").click(function(){
-    $("#query_content").val() = $(this).text;
+  $("body").on( "click", ".possible-match" function(){
+    $("#query_content").val($(this).text);
     console.log("click!");
   });
 
