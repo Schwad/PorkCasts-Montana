@@ -64,8 +64,9 @@
   });
 
   $("body").on( "click", ".possible-match", function(){
-    console.log(this);
-    $("#query_content").val(this.text);
+    console.log(this.text);
+    var mySelection = this.text;
+    $("#query_content").val(mySelection);
     console.log("click!");
   });
 
