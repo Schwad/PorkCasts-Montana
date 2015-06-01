@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root "static_pages#index"
   get "static_pages/about", :as => 'about_page'
   get "static_pages/shared", :as => 'shared_page'
+  get "static_pages/news", :as => 'news_page'
   resources :users do
     resources :queries
   end
