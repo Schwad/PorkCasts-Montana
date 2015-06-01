@@ -63,7 +63,7 @@
     });
   });
 
-  $("body").delegate(".possible-match", "click", function(){
+  $(".match-big").delegate("div.possible-match", "click", function(){
     console.log($(this).text);
     var mySelection = $(this).text;
     $("#query_content").val(mySelection);
