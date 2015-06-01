@@ -56,6 +56,10 @@
               myIterator++;
               console.log(myIterator);
             }
+            $("body .possible-match").click(function(){
+              $("#query_content").val() = $(this).text;
+              console.log("click!");
+            });
           });
         }
        },
@@ -64,9 +68,5 @@
     });
   });
 
-  $("body .possible-match").click(function(){
-    $("#query_content").val() = $(this).text;
-    console.log("click!");
-  });
 
 <% end %>
