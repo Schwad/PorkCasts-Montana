@@ -1,9 +1,45 @@
+<%= javascript_tag do %>
+  var js_array = [<%= raw @object.to_json %>];
+  $(window).keyup(function() {
+    $(".match-big").html("");
+    $(".match-second").html("");
+    var myData = $("#query_content").val();
+    $.ajax( {
+      url: "http://localhost:3000/tags.json",
+      data: { value: myData },
+      type: "GET",
+      dataType : "json",
+      success: function( json ) {
+        if($("#query_content").val().length > 2) {
+        var myIterator = 1;
+          json.forEach(function(tag){
+            if(myIterator < 6){
+              $(".match-big").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
+              myIterator++;
+              console.log(myIterator);
+            } else if(myIterator < 12){
+              $(".match-second").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
+              myIterator++;
+            }
+          });
+        }
+       },
+      error: function( xhr, status, errorThrown ) { console.log("error!"); },
+      complete: function( xhr, status ) { console.log("complete!"); }
+    });
+  });
+<% end %>
+
 <div class = "upper-fold">
 <div class="row">
   <div class="col-md-12"><h1>PorkCasts</h1></div>
 </div>
 <div class="row">
-  <div class="col-md-2"></div>
+  <div class="col-md-2">
+
+    <div class="match-big" style="text-align:center; width: 250px;z-index: 1000;position:absolute;margin-left:73px;margin-top:-54px;"></div>
+    <div class="match-second" style="text-align:center; width: 250px;z-index: 1100;position:absolute;margin-left:833px;margin-top:-54px;"></div>
+  </div>
   <div class="col-md-8 center-stuff">
     <% if current_user %>
       <h2>Welcome to PorkCasts, <%= current_user.email %> !</h2>
@@ -24,8 +60,11 @@
         <%= f.submit "PorkCast!" %>
       </div>
     <% end %>
+
     </div>
-  <div class="col-md-2"></div>
+
+  <div class="col-md-2">
+  </div>
 </div>
 </div>
 
