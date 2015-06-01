@@ -17,6 +17,9 @@
  <% else %>
    <p class="alert"><%= alert %></p>
  <% end %>
+   <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %> my-alert" style="text-align:center; position:absolute; width:100%; z-index: 510; margin-top:-20px;"><%= value %></div>
+        <% end %>
   <div class="container main-container">
     <%= yield %>
   </div>

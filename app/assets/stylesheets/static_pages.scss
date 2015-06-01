@@ -42,6 +42,15 @@
     font-size: 0.95em;
 }
 
+.my-alert {
+  animation:notice 1.5s 1;
+    -webkit-animation:notice 1.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay:5s;
+    -webkit-animation-delay:5s;
+    -webkit-animation-fill-mode: forwards;
+}
+
 p.notice {
   z-index: 500;
   margin-top: -16px;
