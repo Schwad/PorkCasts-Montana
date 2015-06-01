@@ -8,7 +8,7 @@
     $(".match-second").html("");
     var myData = $("#query_content").val();
     $.ajax( {
-      url: "http://porkcast.herokuapp.com/tags.json",
+      url: "http://www.porkcast.com/tags.json",
       data: { value: myData },
       type: "GET",
       dataType : "json",
@@ -38,6 +38,7 @@
     });
   });
 <% end %>
+
 
 <div class = "upper-fold">
 <div class="row">
