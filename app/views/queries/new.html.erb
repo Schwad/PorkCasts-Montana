@@ -1,4 +1,43 @@
+
+
+    <% @results =  Rails.application.config.my_config["array"] %>
+
+<div class="page-wrap">
+<div class = "row">
+  <div class = "col-md-6">
+    <div style="margin-left:300px">
+   <h2> Create new query</h2>
+   <br>
+   <%= form_for @user do |f| %>
+      <%= fields_for @query do |query_fields| %>
+        <% query_fields.label :time_to_autocomplete %>
+        <%= query_fields.text_field :content, :placeholder => "e.g. Staples" %>
+      <% end %>
+      <br><br>
+      <%= f.submit "Create New PorkCast!", :class => 'animation-while-load'  %>
+    <% end %>
+    </div>
+  </div>
+  <div class = "col-md-6">
+    <br>
+    <div class="helper-wrapper">
+      <div class="possible-match" style="text-decoration:underline">SEARCH HELPER</div>
+      <div class="match-big" style="text-align:center; width: 250px; margin-right:300px;"></div>
+    <div>
+  </div>
+</div>
+
+</div>
+
 <%= javascript_tag do %>
+  $("body .animation-while-load").click(function(){
+    $(".page-wrap").append("<div class='load-animation'><img src='/assets/ajax-loader-b98f0466a81ba5642c9bafbc00964f0e559945a4ec996a165d2179d03bd5e8ca.gif' alt='Ajax loader b98f0466a81ba5642c9bafbc00964f0e559945a4ec996a165d2179d03bd5e8ca' /></div>");
+    console.log("click!");
+  });
+
+  $(".page-wrap").append("<div class='load-animation'>" +  + "</div>");
+    console.log("click!");
+
   var js_array = [<%= raw @object.to_json %>];
   $(window).keyup(function() {
     $(".match-big").html("");
@@ -24,33 +63,5 @@
       complete: function( xhr, status ) { console.log("complete!"); }
     });
   });
+
 <% end %>
-
-    <% @results =  Rails.application.config.my_config["array"] %>
-
-<div class="page-wrap">
-<div class = "row">
-  <div class = "col-md-6">
-    <div style="margin-left:300px">
-   <h2> Create new query</h2>
-   <br>
-   <%= form_for @user do |f| %>
-      <%= fields_for @query do |query_fields| %>
-        <% query_fields.label :time_to_autocomplete %>
-        <%= query_fields.text_field :content, :placeholder => "e.g. Staples" %>
-      <% end %>
-      <br><br>
-      <%= f.submit "Create New PorkCast!" %>
-    <% end %>
-    </div>
-  </div>
-  <div class = "col-md-6">
-    <br>
-    <div class="helper-wrapper">
-      <div class="possible-match" style="text-decoration:underline">SEARCH HELPER</div>
-      <div class="match-big" style="text-align:center; width: 250px; margin-right:300px;"></div>
-    <div>
-  </div>
-</div>
-
-</div>

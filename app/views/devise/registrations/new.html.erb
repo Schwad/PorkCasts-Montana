@@ -1,11 +1,14 @@
 <div class="page-wrap">
-  <div style="margin-left:500px;">
+  <div style="margin-left:40px;">
     <br><br><br><br>
     <h2>Sign up</h2>
     <br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="devise-error"><%= devise_error_messages! %></div>
-
+  <% if devise_error_messages!.match(/1 error prohibited this user from being saved/) %>
+    <div><h3>Great, now select your password and get ready to PorkCast!</h3></div><br>
+  <% else %>
+    <div class="devise-error"><%= devise_error_messages! %></div>
+  <% end %>
   <div class="field">
     <%= f.label :email, :value => params[:user][:email] %><br />
     <%= f.email_field :email, autofocus: true %>
