@@ -63,7 +63,7 @@
     });
   });
 
-  $("body").click(".possible-match", function(){
+  $("body .possible-match").click(function(){
     console.log(this);
     $("#query_content").val($(this).text);
     console.log("click!");
