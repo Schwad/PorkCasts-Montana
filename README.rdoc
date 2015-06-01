@@ -1,12 +1,11 @@
 #Welcome to PorkCasts!
 
+See it in action at [http://www.porkcast.com](http://www.porkcast.com).
+
 Simply enter your query, email and receive an email *any* time the state of Montana sends that entity a check! It's that simple!
 
 Alright, well if you want to investigate *now*, we will also show you any check or credit card payment made to that entity.
 
-
--->create help supportporkcast@gmail.com
--->Explanation of api and 4 months back and refreshing only monthly. include email address for governor to speed it up.
 
 
 
