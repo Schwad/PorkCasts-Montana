@@ -35,9 +35,12 @@
     console.log("click!");
   });
 
-  $(".page-wrap").append("<div class='load-animation'>" +  + "</div>");
+  $("body .possible-match").click(function(){
+    $("#query_content").val() = $(this).text;
     console.log("click!");
+  });
 
+  $(".page-wrap").append("<div class='load-animation'>" +  + "</div>");
   var js_array = [<%= raw @object.to_json %>];
   $(window).keyup(function() {
     $(".match-big").html("");
