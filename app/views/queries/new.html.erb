@@ -39,12 +39,7 @@
     $(".match-big").html("<div class='possible-match'>Test thingy</div>");
     var myData = $("#query_content").val();
 
-   $("body .possible-match").click(function(){
-      $this = this
-      console.log($this.textContent);
-      $("#query_content").val($this.textContent);
-      console.log("click!");
-    });
+
     $.ajax( {
       url: "http://porkcast.herokuapp.com/tags.json",
       data: { value: myData },
@@ -59,7 +54,12 @@
               myIterator++;
               console.log(myIterator);
             }
-
+            $("body .possible-match").click(function(){
+              $this = this;
+              console.log($this.textContent);
+              $("#query_content").val($this.textContent);
+              console.log("click!");
+            });
           });
         }
        },
