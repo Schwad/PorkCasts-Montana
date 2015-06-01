@@ -15,12 +15,13 @@
       success: function( json ) {
         if($("#query_content").val().length > 2) {
         var myIterator = 1;
+          $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + "Possible Matches" + "</div>");
           json.forEach(function(tag){
-            if(myIterator < 6){
+            if(myIterator < 5){
               $(".match-bigg").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
               myIterator++;
               console.log(myIterator);
-            } else if(myIterator < 12){
+            } else if(myIterator < 11){
               $(".match-second").append("<div class=" + "'possible-match'" + ">" + tag + "</div>");
               myIterator++;
             }
@@ -42,7 +43,7 @@
 
 <div class = "upper-fold">
 <div class="row">
-  <div class="col-md-12"><h1>PorkCasts</h1>
+  <div class="col-md-12"><h1><strong>PorkCasts</strong></h1>
     <h2 style="text-align:center;"><strong>Keep tabs on the State Checkbook.<br> Get emails when a new check is written.</strong></h2>
   </div>
 </div>
