@@ -5,7 +5,7 @@
     $(".match-second").html("");
     var myData = $("#query_content").val();
     $.ajax( {
-      url: "http://localhost:3000/tags.json",
+      url: "http://http://porkcast.herokuapp.com/tags.json",
       data: { value: myData },
       type: "GET",
       dataType : "json",
