@@ -1,45 +1,61 @@
 <div class="page-wrap">
   <div style="margin-left:40px;">
-    <br><br><br><br>
-    <h2>Sign up</h2>
-    <br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <% if devise_error_messages!.match(/1 error prohibited this user from being saved/) %>
-    <div><h3>Great, now select your password and get ready to PorkCast!</h3></div><br>
-  <% else %>
-    <div class="devise-error"><%= devise_error_messages! %></div>
-  <% end %>
-  <div class="field">
-    <%= f.label :email, :value => params[:user][:email] %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="row">
+      <div class="col-md-2">
+        <br><br><br><br>
+        <h2>Sign up</h2>
+        <br>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% if devise_error_messages!.match(/1 error prohibited this user from being saved/) %>
+        <div><h3>Great, now select your password and get ready to PorkCast!</h3></div><br>
+      <% else %>
+        <div class="devise-error"><%= devise_error_messages! %></div>
+      <% end %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-    <!-- kill this later -->
-    <% if session[:new_user_query] == "Click New Porkcast to start!" %>
-    <% else %>
-      <% session[:new_user_query] = params[:query][:content]%>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
     <% end %>
 
+    <%= render "devise/shared/links" %>
+     </div>
+     <div class="col-md-5">
+      <h1 style="text-align:center">Get Started!</h1><br>
+      <h4 style="text-align: center;"><strong>Open Access To YOUR Data</strong></h4>
+            <p>PorkCast pulls from the repositories of publicly-available data and serves it to the people in a useful format.</p>
+            <p>You simply:</p>
+            <p><strong>1.</strong> Sign up</p>
+            <p><strong>2.</strong> Create a Query</p>
+            <p><strong>3.</strong> PorkCast!</p>
+            <p>You will be directed to a page for your query which will list all, if any, checks or credit card payments the state has made to that entity or individual since late 2012. You can view and manage all of your queries by clicking 'List PorkCasts', or add new queries by clicking 'Create New PorkCast'.</p>
+            <p>You will then receive an email <strong>any</strong> time the State sends a publicly available check or credit card charge to that entity. Sweet! If you just want to browse and do not want an email notification, you can opt out of emails any time in the right hand column.</p>
+            <p>So what are you waiting for? Keep your government accountable and start PorkCasting!</p>
 
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-</div>
+     </div>
+     <div class="col-md-5">
+      <br><br><br><br>
+        <h4 style="text-align: center;"><strong>QUICK Start Tutorial</strong></h4>
+        <div style="margin-left:17px; width:920px;">
+        <iframe width="446" height="330" src="https://www.youtube.com/embed/tghNckELalg" frameborder="0" allowfullscreen></iframe>
+      </div>
+     </div>
+   </div>
+ </div>
 </div>
