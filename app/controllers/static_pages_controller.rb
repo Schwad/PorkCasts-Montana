@@ -37,6 +37,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def access_denied
+
+  end
+
   def update
 
   end

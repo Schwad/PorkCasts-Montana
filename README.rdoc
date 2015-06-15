@@ -1,6 +1,6 @@
 #Welcome to PorkCasts!
 
-See it in action at [http://www.porkcast.com](http://www.porkcast.com).
+See it in action at http://www.porkcast.com
 
 Simply enter your query, email and receive an email *any* time the state of Montana sends that entity a check! It's that simple!
 
