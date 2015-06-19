@@ -30,6 +30,7 @@ end
 task :first_email_update => :environment do
   @users = User.all
   @users.each do |user|
+  # email = "nicholas.schwaderer@gmail.com"
     UserMailer.admin_test(user).deliver!
   end
 end

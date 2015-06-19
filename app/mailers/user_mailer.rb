@@ -2,6 +2,11 @@ class UserMailer < ApplicationMailer
   default :from => "nicholas.schwaderer@gmail.com"
   default :bcc => "nicholas.schwaderer@gmail.com"
 
+  def admin_test(user)
+    @user = user
+    mail(to: @user.email, subject: "PorkCast compromised by State of Montana, partially back online")
+  end
+
   def welcome(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to PorkCasts Montana!')
@@ -32,8 +37,5 @@ class UserMailer < ApplicationMailer
     mail(to: "nicholas.schwaderer@gmail.com", subject: "Possible Fraud: #{@query.content} is down.")
   end
 
-  def admin_test(user)
-    @user = user
-    mail(to: @user.email, subject: "PorkCast compromised by State of Montana, partially back online")
-  end
+
 end

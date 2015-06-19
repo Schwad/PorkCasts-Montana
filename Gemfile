@@ -22,6 +22,7 @@ gem 'taps'
 gem 'devise'
 gem 'newrelic_rpm'
 gem 'soda-ruby', :require => 'soda'
+gem 'actionmailer'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem "letter_opener", :group => :development
