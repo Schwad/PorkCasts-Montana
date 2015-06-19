@@ -33,6 +33,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def denied
+
+  end
+
   def about
 
   end
