@@ -26,3 +26,10 @@ task :daily_api_check => :environment do
     end
   end
 end
+
+task :first_email_update => :environment do
+  @users = User.all
+  @users.each do |user|
+    UserMailer.admin_test(user).deliver!
+  end
+end

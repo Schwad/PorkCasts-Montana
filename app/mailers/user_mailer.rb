@@ -31,4 +31,9 @@ class UserMailer < ApplicationMailer
     @card = card
     mail(to: "nicholas.schwaderer@gmail.com", subject: "Possible Fraud: #{@query.content} is down.")
   end
+
+  def admin_test(user)
+    @user = user
+    mail(to: @user.email, subject: "PorkCast compromised by State of Montana, partially back online")
+  end
 end
