@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
   def credit_card_search(query)
     query = sanitize_query(query)
     client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
-    return client.get("dvui-wnnh", {:merchant => "#{query}"})
+    return client.get("7824-pmwm", {:merchant => "#{query}"})
   end
 
   def accts_payable_search(query)
      query = sanitize_query(query)
      client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
-     return client.get("pjb4-8ve5", {:payee => "#{query}"})
+     return client.get("d7uw-2snd", {:payee => "#{query}"})
   end
 
   def sanitize_query(query)
