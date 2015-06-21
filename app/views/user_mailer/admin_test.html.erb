@@ -1,10 +1,23 @@
       <h3>
-      On Friday, June 12, 2015, the State of Montana <strong><span style="color:red;">deleted</span></strong> the Checkbook, Credit Card APIs and bulk data available to the public. Those API's were the critical open-data resource that allowed PorkCast to run and provide you the latest information.
-
-      However, the Governor's Checkbook Page (which we have evidence used to also rely on that API) is back online.
-       <strong><span style="color:red">That means for the time being PorkCast will not be able to do new queries.</span></strong><br>
-      We at <%= link_to "PorkCast", "http://www.porkcast.com" %> have been reassured by sources in the administration that the APIs will be brought back online. We will let you know when that happens.
-
-      Meanwhile, current users can still look through their current queries, and new users can <%= link_to "learn more here", about_page_path %> or <%= link_to "check out a tutorial", tutorial_page_path %>.
-      </h3>
-      Best, PorkCast Team.
+      Greetings,
+      <br><br>
+      Shortly following our week of work to get the data online, it would appear that the State of Montana re-uploaded its API last night.
+      <br><br>
+      <strong>What you need to know:</strong>
+      <ul>
+        <li>PorkCast.com is back online and seems to be functional through our first few hours of tests.</li>
+        <li>Please continue to report any interruptions to service or errors to this email address.</li>
+        <li>Part of the new API includes a <strong>LOT of new payment data!</strong> This means there is a possibility that you might get a lot of PorkCasts tomorrow. We are trying to rewrite the code so if you get a bunch of new check/credit card payment records in one day it just sends in one email. But tomorrow may be multiple.</li>
+        <li>Over this next week we will be very carefully combing over the new dataset the State has provided us to inspect for any irregularities.</li>
+      </ul>
+      </h3><br><br>
+      <h4>
+        As a reminder, the queries that you are currently signed up to receive "PorkCasts" on (AKA an email whenever they get new money from the State) are:<br><br>
+        <ol>
+          <% @user.queries.where(opt_out_email: false).each do |query| %>
+            <li><%= query.content %></li>
+          <% end %>
+        </ol>
+        <br><br>
+        You can change this anytime under "list porkcasts" at your PorkCast.com account.<br><br>
+      Best, <br><br>PorkCast Montana Team.
