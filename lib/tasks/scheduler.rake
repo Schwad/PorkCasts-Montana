@@ -15,16 +15,16 @@ end
 task :daily_api_check => :environment do
   # @start_time = Time.now
   puts "starting daily API check at #{Time.now}"
-  User.all.each do |user|
-    puts 'Now querying for ' + user.email + '.....'
-     user.queries.each do |query|
-      if query.opt_out_email == false
-        puts user.email + ' checking for new payments to ' + query.content + '.....'
-        checks_checks(query)
-        checks_credit_cards(query)
-      end
-    end
-  end
+  # User.all.each do |user|
+  #   puts 'Now querying for ' + user.email + '.....'
+  #    user.queries.each do |query|
+  #     if query.opt_out_email == false
+  #       puts user.email + ' checking for new payments to ' + query.content + '.....'
+  #       checks_checks(query)
+  #       checks_credit_cards(query)
+  #     end
+  #   end
+  # end
 end
 
 task :first_email_update => :environment do
