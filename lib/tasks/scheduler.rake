@@ -13,15 +13,28 @@ task :send_reminders => :environment do
 end
 
 task :tweet_porkcast => :environment do
-  # @check = Check.all.sample
-  # client = Twitter::REST::Client.new do |config|
-  #   config.consumer_key        = "WNnutRVMrGhBGBcnx7auBHTDv"
-  #   config.consumer_secret     = "al4WR18nEXJBANQ1qSIMutblzHU105WlPdEhIPkbSvPvIj3Kum"
-  #   config.access_token        = "20441925-beI6LAZ6SBe5q8qCxZjUMJV4uAPfy9ZE2pWLQuBDp"
-  #   config.access_token_secret = "Pb1AYeKZaLikgNznLRIfr8zLpXecYel87eDuFNODx1Pik"
-  # end
+  client = Twitter::REST::Client.new do |config|
+    config.consumer_key        = "WNnutRVMrGhBGBcnx7auBHTDv"
+    config.consumer_secret     = "al4WR18nEXJBANQ1qSIMutblzHU105WlPdEhIPkbSvPvIj3Kum"
+    config.access_token        = "20441925-beI6LAZ6SBe5q8qCxZjUMJV4uAPfy9ZE2pWLQuBDp"
+    config.access_token_secret = "Pb1AYeKZaLikgNznLRIfr8zLpXecYel87eDuFNODx1Pik"
+  end
+  @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
 
-  # client.update("Montana paid $#{@check.amount} to #{@check.payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year}")
+  while @payment.length > 140
+    puts "Too long tweet, (length is #{@payment.length} retrying"
+    @check = Check.all.sample
+    @payee = []
+    @check.payee.split(" ").each do |word|
+      word = word[0] + word[1..-1].downcase
+      @payee << word
+    end
+    @payee = @payee.join(" ")
+
+    @payment = "Montana paid $#{sprintf("%.2f",@check.amount)} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
+  end
+
+  client.update("#{@payment}")
 
 end
 
