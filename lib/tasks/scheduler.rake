@@ -12,6 +12,14 @@ task :send_reminders => :environment do
   end
 end
 
+task :tweet_porkcast => :environment do
+  @check = Check.all.sample
+
+
+  client.update("Montana paid $#{@check.amount} to #{@check.payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year}")
+
+end
+
 task :daily_api_check => :environment do
   # @start_time = Time.now
   puts "starting daily API check at #{Time.now}"
