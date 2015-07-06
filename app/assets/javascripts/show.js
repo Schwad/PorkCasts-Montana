@@ -2,8 +2,27 @@ var myGraphPause = false;
 var myLinkPause = false;
 var myTablePause = false;
 var hoverEngage = false;
+var myDonatePause = false;
 
 $(document).ready(function(){
+
+  //donate hover
+
+  $('.donate-link').hover(function(e) {
+    if(myDonatePause === false && hoverEngage === false){
+      var x = e.pageX;
+      var y = e.pageY;
+      myDonatePause = true;
+      hoverEngage = true;
+      $('.donate-time').fadeIn(520, "swing").css({"margin-left": x, "margin-top": y});
+    }
+  }, function() {
+      setTimeout(function(){
+        $('.donate-time').fadeOut(1830, "swing");
+      }, 1000);
+      setTimeout(function(){ myDonatePause = false; }, 30000);
+      setTimeout(function(){ hoverEngage = false; }, 1000);
+  });
 
   // graph hover
   $('.graph-hold').hover(function(e) {
