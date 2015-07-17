@@ -22,7 +22,7 @@ task :tweet_porkcast => :environment do
     config.access_token_secret = "Pb1AYeKZaLikgNznLRIfr8zLpXecYel87eDuFNODx1Pik"
   end
   @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
-
+  puts "processing...."
   while @payment.length > 140
     puts "Too long tweet, (length is #{@payment.length} retrying"
     @check = Check.all.sample
@@ -35,6 +35,7 @@ task :tweet_porkcast => :environment do
     format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
 
     @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol #mtleg"
+    puts @payment
   end
 
   client.update("#{@payment}")
