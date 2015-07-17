@@ -23,8 +23,9 @@ task :tweet_porkcast => :environment do
   end
   @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
   puts "processing...."
-  num = (1..Check.count).to_a.sample
+  total = (1..Check.count).to_a
   while @payment.length > 140
+    num = total.sample
     puts "Too long tweet, (length is #{@payment.length} retrying"
     @check = Check.find(num)
     @payee = []
