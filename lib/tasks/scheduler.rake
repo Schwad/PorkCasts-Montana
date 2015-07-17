@@ -1,4 +1,6 @@
 require "#{Rails.root}/app/helpers/application_helper"
+require 'action_view'
+include ActionView::Helpers::NumberHelper
 include ApplicationHelper
 
 desc "This task is called by the Heroku scheduler add-on"
@@ -30,8 +32,9 @@ task :tweet_porkcast => :environment do
       @payee << word
     end
     @payee = @payee.join(" ")
+    format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
 
-    @payment = "Montana paid $#{sprintf("%.2f",@check.amount)} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
+    @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol #mtleg"
   end
 
   client.update("#{@payment}")
