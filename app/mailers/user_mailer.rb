@@ -37,5 +37,10 @@ class UserMailer < ApplicationMailer
     mail(to: "nicholas.schwaderer@gmail.com", subject: "Possible Fraud: #{@query.content} is down.")
   end
 
+  def porkcast_version_release(user)
+    @user = user
+    mail(to: @user.email, subject: 'PorkCasts prepares for updated release!')
+  end
+
 
 end
