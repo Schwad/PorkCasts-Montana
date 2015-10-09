@@ -44,6 +44,14 @@ task :tweet_porkcast => :environment do
 
 end
 
+task :email_user_new_feature => :environment do
+  @users = User.all
+  @users.each do |user|
+    UserMailer.porkcast_version_release(user).deliver!
+    puts "Sent email to #{@user.email}"
+  end
+end
+
 task :daily_api_check => :environment do
   # @start_time = Time.now
   puts "starting daily API check at #{Time.now}"
