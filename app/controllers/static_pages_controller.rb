@@ -1,6 +1,12 @@
 class StaticPagesController < ApplicationController
   require "#{Rails.root}/app/helpers/application_helper"
   include ApplicationHelper
+
+  def alternative
+
+
+  end
+
   def index
     max_attributes_json
     if current_user
