@@ -8,12 +8,6 @@ Alright, well if you want to investigate *now*, we will also show you any check 
 
 #Work Tasklist
 
-1. Improve email styling
-2. Bundle emails - only one email per payee per day instead of one email per payment
-3. Donate Hover - hover info on donation link working in development but not production
-4. Improve efficiency - minimize API hits, minimizr AR hits
-
-
-
+DO NOT PUSH TO MASTER. Push to a feature branch then make a pull request for code reviews.
 
 
