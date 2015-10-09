@@ -47,8 +47,12 @@ end
 task :email_user_new_feature => :environment do
   @users = User.all
   @users.each do |user|
-    UserMailer.porkcast_version_release(user).deliver!
-    puts "Sent email to #{@user.email}"
+    begin
+      UserMailer.porkcast_version_release(user).deliver!
+      puts "Sent email to #{@user.email}"
+    rescue
+      puts "We saw an error on there, uh oh!"
+    end
   end
 end
 
