@@ -32,6 +32,10 @@ class StaticPagesController < ApplicationController
   def shared
     # fjlkdsa;jkla;s
     @query = Query.where("content = ?", params[:format])[0]
+    if @query!= nil
+    else
+      @query = "no queries"
+    end
 
   end
 
