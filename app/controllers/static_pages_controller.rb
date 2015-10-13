@@ -30,12 +30,8 @@ class StaticPagesController < ApplicationController
   end
 
   def shared
-    @query = Query.create(
-        :content => params[:format]
-        )
-    creates_checks(@query)
-    creates_credit_cards(@query)
-    @query.save
+    # fjlkdsa;jkla;s
+    @query = Query.where("content = ?", params[:format])[0]
 
   end
 
