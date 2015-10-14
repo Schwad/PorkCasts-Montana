@@ -36,7 +36,7 @@ task :tweet_porkcast => :environment do
     @payee = @payee.join(" ")
     format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
 
-    @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol #mtleg"
+    @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
     puts @payment
   end
 
