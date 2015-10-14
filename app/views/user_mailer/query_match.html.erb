@@ -13,12 +13,14 @@
   <thead>
     <th>Payee</th>
     <th>Amount</th>
+    <th>Payment Date</th>
   </thead>
  <tbody style="border:solid black 2px">
     <% @payments.each do |payment| %>
       <tr style="border:solid black 2px">
         <td><%= payment[0] %></td>
         <td>$<%= sprintf( "%0.02f", payment[1]) %></td>
+        <td><%= payment[2].strftime("%d/%m/%Y") %></td>
       </tr>
 
     <% end %>
