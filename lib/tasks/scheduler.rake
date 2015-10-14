@@ -36,7 +36,7 @@ task :tweet_porkcast => :environment do
     @payee = @payee.join(" ")
     format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
 
-    @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol #mtleg"
+    @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
     puts @payment
   end
 
@@ -57,24 +57,42 @@ task :email_user_new_feature => :environment do
 end
 
 task :daily_api_check => :environment do
-  # @start_time = Time.now
+  @start_time = Time.now
+
   puts "starting daily API check at #{Time.now}"
-  # User.all.each do |user|
-  #   puts 'Now querying for ' + user.email + '.....'
-  #    user.queries.each do |query|
-  #     if query.opt_out_email == false
-  #       puts user.email + ' checking for new payments to ' + query.content + '.....'
-  #       checks_checks(query)
-  #       checks_credit_cards(query)
-  #     end
-  #   end
-  # end
+  User.all.each do |user|
+    @reveal_all = []
+    puts 'Now querying for ' + user.email + '.....'
+     user.queries.each do |query|
+      if query.opt_out_email == false
+        puts user.email + ' checking for new payments to ' + query.content + '.....'
+        @reveal_checks = checks_checks(query)
+        @reveal_cards = checks_credit_cards(query)
+
+        if @reveal_checks.class == Array
+          @reveal_checks.each do |element|
+            @reveal_all << element
+          end
+        end
+        if @reveal_cards.class == Array
+          @reveal_cards.each do |element|
+            @reveal_all << element
+          end
+        end
+      end
+    end
+     if @reveal_all.length > 0
+        UserMailer.query_match(user, @reveal_all).deliver!
+        puts "email should have sent!"
+      end
+  end
+  @end_time = Time.now
+  puts "Daily api check took #{@end_time - @start_time}"
 end
 
 task :first_email_update => :environment do
   @users = User.all
   @users.each do |user|
-  # email = "nicholas.schwaderer@gmail.com"
     UserMailer.admin_test(user).deliver!
   end
 end

@@ -12,22 +12,24 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome to PorkCasts Montana!')
   end
 
-  def query_match(query)
-    @query = query
-    @user = @query.user
-    mail(to: query.user.email, subject: 'Check written to #{query.content}')
-  end
+  # def query_match(query)
+  #   @query = query
+  #   @user = @query.user
+  #   mail(to: query.user.email, subject: 'Check written to #{query.content}')
+  # end
 
   def test_mailer(user)
     @user = user
     mail(to: user.email, subject: 'This is a test rake task in heroku scheduler to ' + @user.email)
   end
 
-  def query_match(user, payee, amount)
+  def query_match(user, payments)
     @user = user
-    @payee = payee
-    @amount = amount
-    mail(to: @user.email, subject: 'PORKCAST: New Payment to ' +  @payee + ' from the State of Montana in the amount of $' + @amount.to_s)
+    @payments = payments
+    sum = 0
+    @payments.each {|a| sum+=a[1]}
+    @sum = sprintf( "%0.02f", sum)
+    mail(to: @user.email, subject: 'PORKCAST: New Montana Spending in the amount of $' + @sum + ' to your Porkcast queries!')
   end
 
   def fraud_mailer(query, check, card)
