@@ -1,11 +1,12 @@
 You have a new PorkCast!
 
-On <%= Date.today %> your page on PorkCast has been updated to show new payments the State of Montana made to your queries. Below is a summary, Go to the main <%= link_to "PorkCast", "http://www.porkcast.com" %> website to check it out! (PS: your email is set up not to accept HTML, that's cool, but just so you know we cannot style this summary as well without it)
+On <%= Date.today.strftime("%d/%m/%Y") %> your page on PorkCast has been updated to show new payments the State of Montana made to your queries. Below is a summary, Go to the main <%= link_to "PorkCast", "http://www.porkcast.com" %> website to check it out! (PS: your email is set up not to accept HTML, that's cool, but just so you know we cannot style this summary as well without it)
 
 
 <% @payments.each do |payment| %>
     <%= payment[0] %>
     <%= payment[1] %>
+    <%= payment[2].strftime("%d/%m/%Y") %>
 
 <% end %>
 
