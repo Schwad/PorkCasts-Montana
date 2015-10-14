@@ -66,8 +66,8 @@ task :daily_api_check => :environment do
      user.queries.each do |query|
       if query.opt_out_email == false
         puts user.email + ' checking for new payments to ' + query.content + '.....'
-        @reveal_checks = checks_checks(query) #checkbundle
-        @reveal_cards = checks_credit_cards(query) #checkbundle
+        @reveal_checks = checks_checks(query)
+        @reveal_cards = checks_credit_cards(query)
 
         if @reveal_checks.class == Array
           @reveal_checks.each do |element|
@@ -93,7 +93,6 @@ end
 task :first_email_update => :environment do
   @users = User.all
   @users.each do |user|
-  # email = "nicholas.schwaderer@gmail.com"
     UserMailer.admin_test(user).deliver!
   end
 end

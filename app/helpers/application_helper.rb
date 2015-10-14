@@ -45,15 +45,14 @@ module ApplicationHelper
       puts "New checks for #{query.content}!"
       new_checks = @possible_checks.count - query.checks.count
 
-      @revealed_checks = [] #checkbundle
+      @revealed_checks = []
 
       while new_checks > 0
         @possible_checks[-new_checks].save
-        @revealed_checks << [@possible_checks[-new_checks].payee, @possible_checks[-new_checks].amount] #checkbundle
-        # UserMailer.query_match(query.user, @possible_checks[-new_checks].payee, @possible_checks[-new_checks].amount).deliver! #deleteifwork
+        @revealed_checks << [@possible_checks[-new_checks].payee, @possible_checks[-new_checks].amount]
         new_checks -= 1
       end
-      return @revealed_checks #checkbundle
+      return @revealed_checks
     elsif @possible_checks.count < query.checks.count
       puts "Possible error or fraud detected for #{query.content}, checks logs"
       UserMailer.fraud_mailer(query, @possible_checks.count, 1000000).deliver!
@@ -85,14 +84,13 @@ module ApplicationHelper
     elsif @possible_credit_cards.count > query.credit_cards.count
       puts "New credit_card for #{query.content}!"
       new_credit_card = @possible_credit_cards.count - query.credit_cards.count
-      @revealed_cards = [] #checkbundle
+      @revealed_cards = []
       while new_credit_card > 0
         @possible_credit_cards[-new_credit_card].save
-        @revealed_cards << [ @possible_credit_cards[-new_credit_card].merchant, @possible_credit_cards[-new_credit_card].amount] #checkbundle
-        # UserMailer.query_match(query.user, @possible_credit_cards[-new_credit_card].merchant, @possible_credit_cards[-new_credit_card].amount).deliver!
+        @revealed_cards << [ @possible_credit_cards[-new_credit_card].merchant, @possible_credit_cards[-new_credit_card].amount]
         new_credit_card -= 1
       end
-      return @revealed_cards #checkbundle
+      return @revealed_cards
     elsif @possible_credit_cards.count < query.credit_cards.count
       UserMailer.fraud_mailer(query, 1000000, @possible_credit_cards.count).deliver!
       puts "Possible error or fraud detected for #{query.content}, check credit_card logs"
