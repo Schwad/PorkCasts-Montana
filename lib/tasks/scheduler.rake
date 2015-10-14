@@ -57,18 +57,37 @@ task :email_user_new_feature => :environment do
 end
 
 task :daily_api_check => :environment do
-  # @start_time = Time.now
+  @start_time = Time.now
+
   puts "starting daily API check at #{Time.now}"
   User.all.each do |user|
+    @reveal_all = []
     puts 'Now querying for ' + user.email + '.....'
      user.queries.each do |query|
       if query.opt_out_email == false
         puts user.email + ' checking for new payments to ' + query.content + '.....'
         @reveal_checks = checks_checks(query) #checkbundle
         @reveal_cards = checks_credit_cards(query) #checkbundle
+
+        if @reveal_checks.class == Array
+          @reveal_checks.each do |element|
+            @reveal_all << element
+          end
+        end
+        if @reveal_cards.class == Array
+          @reveal_cards.each do |element|
+            @reveal_all << element
+          end
+        end
       end
     end
+     if @reveal_all.length > 0
+        UserMailer.query_match(user, @reveal_all).deliver!
+        puts "email should have sent!"
+      end
   end
+  @end_time = Time.now
+  puts "Daily api check took #{@end_time - @start_time}"
 end
 
 task :first_email_update => :environment do
