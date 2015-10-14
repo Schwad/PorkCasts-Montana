@@ -49,7 +49,7 @@ module ApplicationHelper
 
       while new_checks > 0
         @possible_checks[-new_checks].save
-        @revealed_checks << [@possible_checks[-new_checks].payee, @possible_checks[-new_checks].amount]
+        @revealed_checks << [@possible_checks[-new_checks].payee, @possible_checks[-new_checks].amount, @possible_checks[-new_checks].payment_date]
         new_checks -= 1
       end
       return @revealed_checks
@@ -87,7 +87,7 @@ module ApplicationHelper
       @revealed_cards = []
       while new_credit_card > 0
         @possible_credit_cards[-new_credit_card].save
-        @revealed_cards << [ @possible_credit_cards[-new_credit_card].merchant, @possible_credit_cards[-new_credit_card].amount]
+        @revealed_cards << [ @possible_credit_cards[-new_credit_card].merchant, @possible_credit_cards[-new_credit_card].amount, @possible_credit_cards[-new_credit_card].billing_date]
         new_credit_card -= 1
       end
       return @revealed_cards
