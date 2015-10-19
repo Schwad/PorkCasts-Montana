@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_create :send_welcome_email
-  has_many :queries
+  has_many :queries, dependent: :destroy
   accepts_nested_attributes_for :queries
 
   def send_welcome_email
