@@ -1,7 +1,32 @@
-<h2>You have a new PorkCast!</h2>
+
+<% if @payments.length > 1 %>
+  <h2>You have <%= @payments.length %> new PorkCasts!</h2>
+<% else %>
+  <h2>You have a new PorkCast!</h2>
+<% end %>
 <br>
 
 
-<h3><p>On <%= Date.today %> the State of Montana published information showing they sent a new payment to <%= @payee %> for <%= @amount %> ! Go to the main PorkCasts website to check it out!</p></h3>
+<h3><p>On <%= Date.today.strftime("%d/%m/%Y") %> Your page on PorkCast has been updated to show new payments the State of Montana made to your queries. Below is a summary, Go to the main <%= link_to "PorkCast", "http://www.porkcast.com" %> website to check it out!</p></h3>
 
-<p><em>This email was sent to <%= @user.email %>. To unsubscribe from this PorkCast log in and disable notifications for this or all PorkCasts at  <a href="https://porkcast.herokuapp.com">https://porkcast.herokuapp.com"</a></em></p>
+<table>
+  <thead>
+    <th>Payee</th>
+    <th>Amount</th>
+    <th>Payment Date</th>
+  </thead>
+ <tbody style="border:solid black 2px">
+    <% @payments.each do |payment| %>
+      <tr style="border:solid black 2px">
+        <td><%= payment[0] %></td>
+        <td>$<%= sprintf( "%0.02f", payment[1]) %></td>
+        <td><%= payment[2].strftime("%d/%m/%Y") %></td>
+      </tr>
+
+    <% end %>
+ </tbody>
+</table>
+
+<p><em>This email was sent to <%= @user.email %>. To unsubscribe from this PorkCast log in and disable notifications for this or all PorkCasts at  <a href="http://www.porkcast.com">http://www.porkcast.com</a></em></p>
+
+<em>PorkCast is offered as a service freely to the people of Montana, built by concerned volunteers who support government accountability. However, it is not free to provide. If you would like to see PorkCast continue and grow, <a href="paypal.me/PorkCast"><strong>consider making a donation today</strong></a></em>
