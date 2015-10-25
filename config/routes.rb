@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root "static_pages#alternative"
+  # root "static_pages#alternative"
 
   #Temporarily disabled until release
-  # root "static_pages#index"
+  root "static_pages#index"
   get "static_pages/about", :as => 'about_page'
   get "static_pages/denied", :as => 'denied_page'
   get "static_pages/shared", :as => 'shared_page'
