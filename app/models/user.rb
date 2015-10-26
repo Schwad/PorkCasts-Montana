@@ -16,19 +16,23 @@ class User < ActiveRecord::Base
   end
 
   def active_queries
+
     return self.queries.where("opt_out_email = ?", false).count
   end
 
   def queries_daily
+    today = 0.days.ago
     return self.queries.where("created_at = ?", today).count
   end
 
   def active_queries_overload
+
     if self.active_queries > 250
       return true
     else
       return false
     end
+
   end
 
   def queries_daily_overload

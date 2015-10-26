@@ -33,22 +33,33 @@ class QueriesController < ApplicationController
   end
 
   def create
-    @query_email = params[:query][:content]
-    if @query_email.include? "@"
-      if User.exists?(:email => @query_email)
-        redirect_to new_user_session_path
-      else
-        redirect_to new_user_registration_path
-      end
-    else
-      @query = Query.create(
-        :content => @query_email
-        )
-      creates_checks(@query)
-      creates_credit_cards(@query)
-      flash[:success] = "Query created!"
-      redirect_to user_query_path(@query.id)
-    end
+    #KILLING-COPY-CODE-FLAG
+    # @query_email = params[:query][:content]
+    # if @query_email.include? "@"
+    #   if User.exists?(:email => @query_email)
+    #     redirect_to new_user_session_path
+    #   else
+    #     redirect_to new_user_registration_path
+    #   end
+    # else
+
+    #   if current_user.active_queries_overload
+
+    #     @query = Query.create(
+    #       :content => @query_email,
+    #       :opt_out_email => true
+    #       )
+    #     flash[:error] = "You have now gone over your limit of 250 active queries to receive porkcast notifications for"
+    #   else
+    #     @query = Query.create(
+    #       :content => @query_email,
+    #       )
+    #   end
+    #   creates_checks(@query)
+    #   creates_credit_cards(@query)
+    #   flash[:success] = "Query created!"
+    #   redirect_to user_query_path(@query.id)
+    # end
   end
 
   def destroy
