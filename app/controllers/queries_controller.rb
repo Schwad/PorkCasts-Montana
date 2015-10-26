@@ -85,14 +85,22 @@ class QueriesController < ApplicationController
     @user = User.find(@query.user_id)
 
     if @query.opt_out_email == true
-      @query.opt_out_email = false
+      if @user.active_queries_overload
+
+      else
+        @query.opt_out_email = false
+      end
     else
       @query.opt_out_email = true
     end
     @query.save
     @query = Query.find(params["id"])
     respond_to do |format|
-      format.js {}
+      format.js {
+        if @user.active_queries_overload
+          flash[:success] = "You have reached your limit of 250 porkcast notification-enabled queries. Please disable a query to enable others."
+        end
+      }
     end
   end
 end
