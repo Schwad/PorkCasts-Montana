@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
   def send_test_email
     UserMailer.test_mailer(self).deliver!
   end
+
+  def active_queries
+
+  end
+
+  def queries_daily_overload
+
+    if self.queries.where("created_at = ?", today).count > 50
+      return true
+    else
+      return false
+    end
+
+  end
 end
