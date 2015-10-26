@@ -9,10 +9,22 @@ class UsersController < ApplicationController
       creates_checks(@query)
       creates_credit_cards(@query)
     else
-      @query = Query.new(
-        :content => params[:query][:content],
-        :user_id => current_user.id
-      )
+
+      if current_user.active_queries_overload
+
+        @query = Query.create(
+          :content => params[:query][:content],
+          :opt_out_email => true,
+          :user_id => current_user.id
+          )
+        lash[:error] = "You have now gone over your limit of 250 active queries to receive porkcast notifications for"
+      else
+        @query = Query.new(
+          :content => params[:query][:content],
+          :user_id => current_user.id
+        )
+      end
+
       @query.save
       creates_checks(@query)
       creates_credit_cards(@query)
