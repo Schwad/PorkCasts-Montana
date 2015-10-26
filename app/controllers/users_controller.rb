@@ -35,10 +35,12 @@ class UsersController < ApplicationController
         @query.save
         creates_checks(@query)
         creates_credit_cards(@query)
+        redirect_to user_query_path(current_user.id, @query.id)
+
       end
+
     end
 
-      redirect_to user_query_path(current_user.id, @query.id)
   end
 
 
