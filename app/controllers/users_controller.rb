@@ -9,7 +9,6 @@ class UsersController < ApplicationController
       creates_checks(@query)
       creates_credit_cards(@query)
     else
-
       if current_user.active_queries_overload
 
         @query = Query.create(
@@ -17,19 +16,20 @@ class UsersController < ApplicationController
           :opt_out_email => true,
           :user_id => current_user.id
           )
-        lash[:error] = "You have now gone over your limit of 250 active queries to receive porkcast notifications for"
+        flash[:success] = "You have now gone over your limit of 250 active queries to receive porkcast notifications; you will need to deactivate other queries' email notifications to enable others."
       else
         @query = Query.new(
           :content => params[:query][:content],
           :user_id => current_user.id
         )
+        flash[:success] = "Query created!"
       end
 
       @query.save
       creates_checks(@query)
       creates_credit_cards(@query)
     end
-      flash[:success] = "Query created!"
+
       redirect_to user_query_path(current_user.id, @query.id)
   end
 
