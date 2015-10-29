@@ -18,8 +18,6 @@ describe Query do
       expect(new_query).to be_valid
     end
 
-
-
   end
 
   describe "associations and methods" do
