@@ -1,3 +1,4 @@
 class Check < ActiveRecord::Base
-  has_many :queries
+  belongs_to :query
+  validates :query_id, presence: true
 end
