@@ -4,9 +4,9 @@ describe User do
 
   let(:check_list){create_list(:check, 5)}
   let(:card_list){create_list(:credit_card, 5)}
-  let(:user){build(:user)}
-  let(:query_list){create_list(:query, 5, user_id: user.id)}
-  user.reload
+  let(:query_list){create_list(:query, 5)}
+  let(:user){create(:user, queries: query_list)}
+
 
 
   it "has a valid factory" do
@@ -28,8 +28,6 @@ describe User do
   end
 
   describe "associations and methods" do
-    # before { user }
-    # before { query_list }
 
     it "has many queries" do
       expect(user.queries.count).to eq(5)
