@@ -1,3 +1,3 @@
 class Check < ActiveRecord::Base
-  has_many :queries
+  belongs_to :query
 end

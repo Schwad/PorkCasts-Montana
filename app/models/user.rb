@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :queries
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver!
+    UserMailer.welcome(self).deliver_now!
   end
 
   def send_test_email
-    UserMailer.test_mailer(self).deliver!
+    UserMailer.test_mailer(self).deliver_now!
   end
 
   def active_queries
