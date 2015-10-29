@@ -1,6 +1,5 @@
 class Query < ActiveRecord::Base
   belongs_to :user
-  validates :user_id, presence: true
   has_many :checks, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
 
