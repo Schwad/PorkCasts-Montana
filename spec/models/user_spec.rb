@@ -64,7 +64,4 @@ describe User do
     end
 
   end
-  it "is valid with content and a user_id"
-  it "is invalid without a user id"
-
 end
