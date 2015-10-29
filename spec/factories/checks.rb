@@ -1,7 +1,8 @@
 FactoryGirl.define do
-  factory :credit_card do
+  factory :check do
     amount 1234.0
     department "something"
     payee "someone"
+    query_id 1
   end
 end

@@ -4,5 +4,6 @@ FactoryGirl.define do
     fiscal_year 2013
     department "something"
     merchant "someone"
+    query_id 1
   end
 end
