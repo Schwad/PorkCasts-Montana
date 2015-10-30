@@ -54,6 +54,8 @@ gem 'json'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem "brakeman", :require => false
+
 group :development do
   gem 'better_errors'
   gem 'hirb'
