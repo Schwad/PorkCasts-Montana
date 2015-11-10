@@ -1,3 +1,5 @@
+require "faker"
+
 FactoryGirl.define do
   factory :check do
     amount 1234.0
