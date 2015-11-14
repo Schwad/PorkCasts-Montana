@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
 
 #make services folder; service object.
 #abstractions of business logic (aka api's).
+  rescue_from CanCan::AccessDenied do |exception|
+    if current_user
+      redirect_to root_url, flash[:success] = exception.message
+    else
+      redirect_to new_user_session_path, flash[:success] = exception.message
+    end
+  end
 
   def credit_card_search(query)
     query = sanitize_query(query)
