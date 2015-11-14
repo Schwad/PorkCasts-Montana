@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'rubocop', require: false
 gem "administrate"
+gem 'cancancan', '~> 1.10'
 #everyday rails rec cluster.
 group :development,:test do
   gem "rspec-rails", "~> 3.1.0"
