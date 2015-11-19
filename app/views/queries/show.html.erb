@@ -13,6 +13,7 @@
 
 
   <script>
+    function loadajax(){
       $.ajax("http://simple-track.r15.railsrumble.com/api/events", {
         method: "PUT",
         data: {
@@ -24,7 +25,12 @@
         headers: {
           "X-AUTHTOKEN": "rnfljeruyid8wfqu6ks9x5scnnxvy784e0usawwg8oc"
         }
-      })
+      });
+    }
+    $(function(){
+      setTimeout(loadajax,35000);
+    });
+
   </script>
 <% end %>
 <!-- End banal Integration -->
