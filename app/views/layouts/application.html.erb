@@ -17,9 +17,6 @@
  <% else %>
    <p class="alert"><%= alert %></p>
  <% end %>
- <% if current_user %>
-    <%= hidden_field_tag('user_email', current_user.email) %>
- <% end %>
    <% flash.each do |key, value| %>
           <div class="alert alert-<%= key %> my-alert" style="text-align:center; position:absolute; width:100%; z-index: 510; margin-top:-20px;"><%= value %></div>
         <% end %>
