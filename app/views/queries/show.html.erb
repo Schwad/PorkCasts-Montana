@@ -11,16 +11,20 @@
   <%= hidden_field_tag('user_email', current_user.email) %>
   <%= hidden_field_tag('user_query', @query.content) %>
 
-
+  <!-- OPTIONAL BELOW OBJECT: ,
+          target: '{ "name": "show page" }', -->
   <script>
     function loadajax(){
+      console.log("User query processing as: " + $('#user_query').val());
+      console.log("User email processing as: " + $('#user_email').val());
+      console.log("Actor as : " + '{ "name": ' + $('#user_email').val() + ' }');
+      console.log("Object as : " + '{ "name": ' + $('#user_query').val() + ', "type": "query" }');
       $.ajax("http://simple-track.r15.railsrumble.com/api/events", {
         method: "PUT",
         data: {
           actor: '{ "name": ' + $('#user_email').val() + ' }',
           verb: "created query",
-          object: '{ "name": ' + $('#user_query').val() + ', "type": "query" }',
-          target: '{ "name": "show page" }',
+          object: '{ "name": ' + $('#user_query').val() + ', "type": "query" }'
         },
         headers: {
           "X-AUTHTOKEN": "rnfljeruyid8wfqu6ks9x5scnnxvy784e0usawwg8oc"
@@ -28,7 +32,7 @@
       });
     }
     $(function(){
-      setTimeout(loadajax,35000);
+      setTimeout(loadajax,10000);
     });
 
   </script>
