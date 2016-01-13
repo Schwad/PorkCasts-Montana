@@ -1,3 +1,5 @@
+#No pushing to heroku master until next version! :D
+
 #Welcome to PorkCasts!
 
 See it in action at http://www.porkcast.com
