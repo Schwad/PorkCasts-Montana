@@ -34,6 +34,7 @@ gem 'bugsnag'
 gem 'social-share-button'
 gem 'groupdate'
 gem "chartkick"
+gem "font-awesome-rails"
 gem 'pg'
 gem 'jquery-ui-rails'
 gem 'taps'
