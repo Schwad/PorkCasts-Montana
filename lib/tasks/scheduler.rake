@@ -23,11 +23,9 @@ task :tweet_porkcast => :environment do
   end
   @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
   puts "processing...."
-  total = (1..Check.count).to_a
   while @payment.length > 140
-    num = total.sample
     puts "Too long tweet, (length is #{@payment.length} retrying"
-    @check = Check.find(num)
+    @check = Check.all.sample
     @payee = []
     @check.payee.split(" ").each do |word|
       word = word[0] + word[1..-1].downcase
