@@ -120,8 +120,11 @@ task :build_mega_database => :environment do
         puts "new credit card with #{credit_card.merchant}, #{credit_card.amount} from #{credit_card.department}"
     end
   end
+  puts "Destroying past credit cards"
   CreditCard.destroy_all
+  puts "Destroying Queries"
   Query.destroy_all
+  puts "Destroying checks"
   Check.destroy_all
 
   puts "Starting with cards reading..."
