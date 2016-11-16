@@ -7,6 +7,11 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "PorkCast compromised by State of Montana, partially back online")
   end
 
+  def tweet_fail(error)
+    @error = error
+    mail(to: "nicholas.schwaderer@gmail.com", subject: "Tweet fail")
+  end
+
   def welcome(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to PorkCasts Montana!')
