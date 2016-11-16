@@ -96,7 +96,7 @@ task :first_email_update => :environment do
 end
 
 task :build_mega_database => :environment do
-
+  #The purpose of this task is to build out the database to improve twitter functionality
   def sanitize_query(query)
     query.content.upcase
   end
@@ -120,12 +120,6 @@ task :build_mega_database => :environment do
         puts "new credit card with #{credit_card.merchant}, #{credit_card.amount} from #{credit_card.department}"
     end
   end
-  puts "Destroying past credit cards"
-  CreditCard.destroy_all
-  puts "Destroying Queries"
-  Query.destroy_all
-  puts "Destroying checks"
-  Check.destroy_all
 
   puts "Starting with cards reading..."
   file = File.read('rows_for_major_db_cards.json')
