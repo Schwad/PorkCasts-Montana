@@ -94,3 +94,67 @@ task :first_email_update => :environment do
     UserMailer.admin_test(user).deliver!
   end
 end
+
+task :build_mega_database => :environment do
+
+  def sanitize_query(query)
+    query.content.upcase
+  end
+
+  def credit_card_search(query)
+    query = sanitize_query(query)
+    client = SODA::Client.new({:domain => "data.datamontana.us", :app_token => "lHUM5m1RF3QfiupyzYsQQSDrY"})
+    return client.get("7824-pmwm", {:merchant => "#{query}"})
+  end
+
+  def creates_credit_cards(query)
+    @credit_cards = credit_card_search(query)
+    @credit_cards.each do |credit_card|
+      CreditCard.create(
+        :query_id => query.id,
+        :department => credit_card.department,
+        :amount => credit_card.amount,
+        :merchant => credit_card.merchant,
+        :billing_date => credit_card.billing_date
+        )
+        puts "new credit card with #{credit_card.merchant}, #{credit_card.amount} from #{credit_card.department}"
+    end
+  end
+  puts "Destroying past credit cards"
+  CreditCard.destroy_all
+  puts "Destroying Queries"
+  Query.destroy_all
+  puts "Destroying checks"
+  Check.destroy_all
+
+  puts "Starting with cards reading..."
+  file = File.read('rows_for_major_db_cards.json')
+  puts "Now turning into JSON...."
+  data = JSON.parse(file)
+  puts "Now to build all these credit cards... oh boy"
+  counter = 0
+  data["data"].each do |element|
+    puts "Now on #{counter} with #{element[11]}"
+    if Query.where("content = ?", element[11]).length == 0
+      @query = Query.create(
+        :content => element[11],
+        :opt_out_email => false,
+        :user_id => 2
+        )
+    end
+    puts "Built query! Now building credit cards"
+
+    CreditCard.create(
+      :query_id => Query.where("content = ?", element[11]).first.id,
+      :department => element[10],
+      :amount => element[13],
+      :merchant => element[11],
+      :billing_date => element[12]
+      )
+    puts "new credit card with #{element[11]}, #{element[13]} from #{element[10]}"
+
+    puts "built credit cards! moving on!"
+    counter += 1
+  end
+
+end
