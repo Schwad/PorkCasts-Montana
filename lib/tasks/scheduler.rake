@@ -61,7 +61,7 @@ task :tweet_porkcast => :environment do
           @payee = @payee.join(" ")
           format_amount = "$" + number_with_precision(@card.amount, :precision => 2, :delimiter => ',').to_s
 
-          @payment = "Montana paid #{format_amount} to #{@payee} on #{@card.billing_date.month}/#{@card.billing_date.day}/#{@card.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@card.merchant.gsub(" ", "%20")} #mtpol"
+          @payment = "Montana paid #{format_amount} to #{@payee} on #{@card.billing_date.month}/#{@card.billing_date.day}/#{@card.billing_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@card.merchant.gsub(" ", "%20")} #mtpol"
           puts @payment
           @card.tweeted = true
           @card.save
