@@ -16,7 +16,7 @@ end
 
 task :tweet_porkcast => :environment do
   random_tweet = (1..6).to_a.sample
-  if random_tweet = 6
+  if random_tweet == 7
     begin
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = "NoAoXM0rin3H4cAnvQ9QiryU7"
