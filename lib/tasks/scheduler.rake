@@ -15,63 +15,66 @@ task :send_reminders => :environment do
 end
 
 task :tweet_porkcast => :environment do
-  begin
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "NoAoXM0rin3H4cAnvQ9QiryU7"
-      config.consumer_secret     = "gHb0ImsgApnwJB0oFweevYH744xiWeo3DE6v33EcrtXKAB4tz5"
-      config.access_token        = "20441925-beI6LAZ6SBe5q8qCxZjUMJV4uAPfy9ZE2pWLQuBDp"
-      config.access_token_secret = "Pb1AYeKZaLikgNznLRIfr8zLpXecYel87eDuFNODx1Pik"
-    end
-    @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
-    puts "processing...."
-    pmt_type_picker = [1,2].sample
-    if pmt_type_picker == 1
-      while @payment.length > 140
-        puts "Too long tweet, (length is #{@payment.length} retrying"
-        @check = Check.all.sample
-        if @check.tweeted == true
-          next
-        else
-          @payee = []
-          @check.payee.split(" ").each do |word|
-            word = word[0] + word[1..-1].downcase
-            @payee << word
-          end
-          @check.tweeted = true
-          @check.save
-          @payee = @payee.join(" ")
-          format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
-
-          @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
-          puts @payment
-        end
+  random_tweet = (1..6).to_a.sample
+  if random_tweet = 6
+    begin
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = "NoAoXM0rin3H4cAnvQ9QiryU7"
+        config.consumer_secret     = "gHb0ImsgApnwJB0oFweevYH744xiWeo3DE6v33EcrtXKAB4tz5"
+        config.access_token        = "20441925-beI6LAZ6SBe5q8qCxZjUMJV4uAPfy9ZE2pWLQuBDp"
+        config.access_token_secret = "Pb1AYeKZaLikgNznLRIfr8zLpXecYel87eDuFNODx1Pik"
       end
-    else
-      while @payment.length > 140
-        @card = CreditCard.all.sample
-        if @card.tweeted == true
-          next
-        else
+      @payment = "AHHHHHHHHHFDJSKLAFJKLDAS;JFKLASD;JFKL;DASJKLF;AJSDKL;FJDASKL;FJKLADS;JFKL;DASJFKL;ADSJFKL;ASDJKLF;ADSJKLFJDSAL;FFDSJFKLSDJFKLDSJFLKJDSLKFJDSLKFJKLDSFJKLDSJFLKDSJFLKDSJLKFDJKLSDFJKLFJKLDFSJKLDSJFKLDSJFLKSD"
+      puts "processing...."
+      pmt_type_picker = [1,2].sample
+      if pmt_type_picker == 1
+        while @payment.length > 140
           puts "Too long tweet, (length is #{@payment.length} retrying"
-          @payee = []
-          @card.merchant.split(" ").each do |word|
-            word = word[0] + word[1..-1].downcase
-            @payee << word
-          end
-          @payee = @payee.join(" ")
-          format_amount = "$" + number_with_precision(@card.amount, :precision => 2, :delimiter => ',').to_s
+          @check = Check.all.sample
+          if @check.tweeted == true
+            next
+          else
+            @payee = []
+            @check.payee.split(" ").each do |word|
+              word = word[0] + word[1..-1].downcase
+              @payee << word
+            end
+            @check.tweeted = true
+            @check.save
+            @payee = @payee.join(" ")
+            format_amount = "$" + number_with_precision(@check.amount, :precision => 2, :delimiter => ',').to_s
 
-          @payment = "Montana paid #{format_amount} to #{@payee} on #{@card.billing_date.month}/#{@card.billing_date.day}/#{@card.billing_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@card.merchant.gsub(" ", "%20")} #mtpol"
-          puts @payment
-          @card.tweeted = true
-          @card.save
+            @payment = "Montana paid #{format_amount} to #{@payee} on #{@check.payment_date.month}/#{@check.payment_date.day}/#{@check.payment_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@check.payee.gsub(" ", "%20")} #mtpol"
+            puts @payment
+          end
+        end
+      else
+        while @payment.length > 140
+          @card = CreditCard.all.sample
+          if @card.tweeted == true
+            next
+          else
+            puts "Too long tweet, (length is #{@payment.length} retrying"
+            @payee = []
+            @card.merchant.split(" ").each do |word|
+              word = word[0] + word[1..-1].downcase
+              @payee << word
+            end
+            @payee = @payee.join(" ")
+            format_amount = "$" + number_with_precision(@card.amount, :precision => 2, :delimiter => ',').to_s
+
+            @payment = "Montana paid #{format_amount} to #{@payee} on #{@card.billing_date.month}/#{@card.billing_date.day}/#{@card.billing_date.year} http://porkcast.herokuapp.com/static_pages/shared.#{@card.merchant.gsub(" ", "%20")} #mtpol"
+            puts @payment
+            @card.tweeted = true
+            @card.save
+          end
         end
       end
-    end
 
-    client.update("#{@payment}")
-  rescue => e
-    UserMailer.tweet_fail(e.message).deliver!
+      client.update("#{@payment}")
+    rescue => e
+      UserMailer.tweet_fail(e.message).deliver!
+    end
   end
 end
 
