@@ -15,7 +15,7 @@ task :send_reminders => :environment do
 end
 
 task :tweet_porkcast => :environment do
-  random_tweet = (1..6).to_a.sample
+  random_tweet = (1..7).to_a.sample
   if random_tweet == 7
     begin
       client = Twitter::REST::Client.new do |config|
