@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.7'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -22,7 +22,7 @@ group :development,:test do
 end
 
 group :test do
-  gem "faker", "~> 1.4.3"
+  gem "faker"
   gem "capybara", "~> 2.4.3"
   gem "database_cleaner", "~> 1.3.0"
   gem "launchy", "~> 2.4.2"
@@ -63,6 +63,7 @@ group :development do
   gem 'better_errors'
   gem 'hirb'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'web-console'
 end
 gem "highcharts-rails", "~> 3.0.0"
 gem 'httparty'
@@ -78,10 +79,9 @@ group :development, :test do
   gem 'pry-byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-ruby "2.2.1"
-
+ruby "2.2.2"
