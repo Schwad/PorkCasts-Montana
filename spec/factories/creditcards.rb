@@ -1,5 +1,4 @@
 require 'faker'
-require 'rails_helper'
 FactoryGirl.define do
   factory :credit_card do
     amount (1..1000).to_a.sample.to_f
