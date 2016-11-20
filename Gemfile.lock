@@ -316,7 +316,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     selectize-rails (0.12.4)
-    selenium-webdriver (2.43.0)
+    selenium-webdriver (2.53.4)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
