@@ -23,10 +23,10 @@ end
 
 group :test do
   gem "faker"
-  gem "capybara", "~> 2.4.3"
-  gem "database_cleaner", "~> 1.3.0"
-  gem "launchy", "~> 2.4.2"
-  gem "selenium-webdriver", "~> 2.43.0"
+  gem "capybara", "~> 2.7.1"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
 end
 
 gem 'twitter'
