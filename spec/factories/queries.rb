@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :query do
-    content "DANIEL ZOLNIKOV"
+    content Faker::Name.name
   end
 end
