@@ -10,3 +10,7 @@ heroku pg:backups:download
 rake db:drop
 rake db:create
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -d porkcast_development latest.dump
+
+4. Add latest.dump to gitignore
+
+TO TEST THIS THE FIRST TIME: creating walter kronkite, not seeing it on production, trying to get it there.
