@@ -1,0 +1,12 @@
+1. Backup Database
+
+heroku pg:backups:capture
+
+2. Download Copy of database
+
+heroku pg:backups:download
+
+3. Import local copy of database into mine
+rake db:drop
+rake db:create
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d porkcast_development latest.dump
