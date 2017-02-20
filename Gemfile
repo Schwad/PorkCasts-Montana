@@ -13,13 +13,19 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'rubocop', require: false
-gem "administrate"
 gem 'cancancan', '~> 1.10'
 #everyday rails rec cluster.
 group :development,:test do
   gem "rspec-rails", "~> 3.1.0"
   gem "factory_girl_rails", "~> 4.4.1"
 end
+gem 'pg'
+
+#Monitoring in development
+gem 'rack-mini-profiler', require: false
+gem 'flamegraph'
+gem 'stackprof'
+gem 'fast_stack'
 
 group :test do
   gem "faker"
@@ -35,7 +41,6 @@ gem 'social-share-button'
 gem 'groupdate'
 gem "chartkick"
 gem "font-awesome-rails"
-gem 'pg'
 gem 'jquery-ui-rails'
 gem 'taps'
 gem 'devise'

@@ -1,4 +1,4 @@
-require 'rails_helper'
+#require 'rails_helper'
 
 describe Query do
   let(:user){create(:user)}

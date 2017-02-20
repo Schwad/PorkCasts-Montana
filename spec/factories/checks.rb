@@ -1,5 +1,5 @@
 require "faker"
-require 'rails_helper'
+# #require 'rails_helper'
 FactoryGirl.define do
   factory :check do
     amount (1..1000).to_a.sample.to_f
