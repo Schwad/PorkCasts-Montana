@@ -20,6 +20,7 @@ group :development,:test do
   gem "factory_girl_rails", "~> 4.4.1"
 end
 gem 'pg'
+gem 'yaml_db_with_schema_tables'
 
 #Monitoring in development
 gem 'rack-mini-profiler', require: false
