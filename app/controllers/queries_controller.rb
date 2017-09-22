@@ -62,7 +62,6 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find(params[:id])
-    @query.includes(:checks, :credit_cards)
     if @query.checks.count == 0 && @query.credit_cards.count == 0
         flash[:success] = "Maybe you didn't get an exact match? Check out the autosuggest and try again!"
     end
