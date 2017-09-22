@@ -1,5 +1,6 @@
 class Query < ActiveRecord::Base
-  belongs_to :user
+  has_many :users, through: :user_queries
+  has_many :user_queries
   has_many :checks, dependent: :destroy
   has_many :credit_cards, dependent: :destroy
 

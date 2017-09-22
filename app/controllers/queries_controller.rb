@@ -9,7 +9,7 @@ class QueriesController < ApplicationController
   include ApplicationHelper
   def index
     @user = User.find(params[:user_id])
-    @queries = @user.queries
+    @queries = @user.queries.includes(:checks, :credit_cards)
     # USE THAT LATER
     # @queries = current_user.queries
   end

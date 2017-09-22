@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user_query do
-    user_id 1
-    query_id 1
+    user nil
+    query nil
   end
 end

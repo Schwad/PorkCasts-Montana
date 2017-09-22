@@ -37,6 +37,7 @@ gem 'groupdate'
 gem "chartkick"
 gem "font-awesome-rails"
 gem 'pg'
+gem 'puma'
 gem 'jquery-ui-rails'
 gem 'taps'
 gem 'devise'
