@@ -158,9 +158,11 @@ module ApplicationHelper
 
   def max_attributes_json
     puts "now setting max stuff"
-    @max_checks = HTTParty.get "https://data.datamontana.us/resource/d7uw-2snd.json?$where=amount>10000000"
-    @max_cards = HTTParty.get "https://data.datamontana.us/resource/7824-pmwm.json?$where=amount>100000"
-     @max_cards.sort! { |a,b| a["amount"] <=> b["amount"] }
-     @max_checks.sort! { |a,b| a["amount"] <=> b["amount"] }
+    # @max_checks = HTTParty.get "https://data.datamontana.us/resource/d7uw-2snd.json?$where=amount>10000000"
+    # @max_cards = HTTParty.get "https://data.datamontana.us/resource/7824-pmwm.json?$where=amount>100000"
+    #  @max_cards.sort! { |a,b| a["amount"] <=> b["amount"] }
+    #  @max_checks.sort! { |a,b| a["amount"] <=> b["amount"] }
+    @max_checks = []
+    @max_cards = []
   end
 end
