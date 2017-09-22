@@ -19,6 +19,10 @@ class QueriesController < ApplicationController
   end
 
   def create
+    query = Query.find(params[:query_id])
+    user = User.find(params[:user_id])
+    user.queries << query
+    redirect_to user_query_path(user_id: user.id, id: query.id)
     # I may need to use this for adding to user_query
     #KILLING-COPY-CODE-FLAG
     # @query_email = params[:query][:content]

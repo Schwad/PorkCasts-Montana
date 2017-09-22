@@ -120,6 +120,14 @@ GEM
     diffy (3.1.0)
     domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
+    elasticsearch (5.0.4)
+      elasticsearch-api (= 5.0.4)
+      elasticsearch-transport (= 5.0.4)
+    elasticsearch-api (5.0.4)
+      multi_json
+    elasticsearch-transport (5.0.4)
+      faraday
+      multi_json
     equalizer (0.0.10)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -297,6 +305,10 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    searchkick (2.3.2)
+      activemodel (>= 4.1)
+      elasticsearch (>= 1)
+      hashie
     selenium-webdriver (2.53.4)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
@@ -417,6 +429,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  searchkick
   selenium-webdriver
   social-share-button
   soda-ruby
