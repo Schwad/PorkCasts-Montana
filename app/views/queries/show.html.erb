@@ -7,7 +7,7 @@
 
 <!-- hovers end -->
 <!-- Banal Integration -->
-<% if @query.created_at.to_date == Date.today && Rails.env != "development" %>
+<% if @query.created_at&.to_date == Date.today && Rails.env != "development" %>
   <%= hidden_field_tag('user_email', current_user.email) %>
   <%= hidden_field_tag('user_query', @query.content) %>
 
@@ -92,7 +92,7 @@
               <td><%= i %></td>
               <td><%= @query.content %></td>
               <td><%= "$" + number_with_precision(check.amount, :precision => 2, :delimiter => ',').to_s %></td>
-              <td><%= check.payment_date.to_date.strftime("%m/%d/%Y") %></td>
+              <td><%= check.payment_date&.to_date.strftime("%m/%d/%Y") %></td>
               <td><%= check.department %></td>
               <td><%= check.payment_category %></td>
               <td>Check</td>
