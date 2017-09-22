@@ -38,7 +38,7 @@ class Query < ActiveRecord::Base
     @array_of_moneys = []
     @array_of_dates = []
     self.checks.each do |check|
-      @array_of_dates << check.payment_date&.to_date
+      @array_of_dates << check&.payment_date&.to_date
       @array_of_moneys << check.amount
     end
     @array_of_data << @array_of_dates

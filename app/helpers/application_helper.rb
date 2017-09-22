@@ -28,11 +28,11 @@ module ApplicationHelper
     @checks.each do |check|
      @possible_checks << Check.new(
           :query_id => query.id,
-          :payment_category => check.payment_category,
+          :payment_category => check&.payment_category,
           :department => check.department,
           :amount => check.amount,
           :payee => check.payee,
-          :payment_date => check.payment_date
+          :payment_date => check&.payment_date
         )
     end
     puts 'Possible checks count: ' + @possible_checks.count.to_s
@@ -122,11 +122,11 @@ module ApplicationHelper
     @checks.each do |check|
       Check.create(
           :query_id => query.id,
-          :payment_category => check.payment_category,
+          :payment_category => check&.payment_category,
           :department => check.department,
           :amount => check.amount,
           :payee => check.payee,
-          :payment_date => check.payment_date
+          :payment_date => check&.payment_date
         )
     end
   end

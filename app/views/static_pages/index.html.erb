@@ -42,7 +42,7 @@
               <td><%= i %></td>
               <td><%= @max_cards[-i]["merchant"]%></td>
               <td><%= "$" + number_with_precision(@max_cards[-i]["amount"].to_i, :precision => 2, :delimiter => ',').to_s %></td>
-              <td><%= @max_cards[-i]["billing_date"]&.to_date.strftime("%m/%d/%Y") %></td>
+              <td><%= @max_cards[-i]["billing_date"]&.to_date&.strftime("%m/%d/%Y") %></td>
               <% i += 1 %>
           </tr>
           <% end %>
@@ -69,7 +69,7 @@
               <td><%= i %></td>
               <td><%= @max_checks[-i]["payee"]%></td>
               <td><%= "$" + number_with_precision(@max_checks[-i]["amount"].to_i, :precision => 2, :delimiter => ',').to_s %></td>
-              <td><%= @max_checks[-i]["payment_date"]&.to_date.strftime("%m/%d/%Y") %></td>
+              <td><%= @max_checks[-i]["payment_date"]&.to_date&.strftime("%m/%d/%Y") %></td>
               <% i += 1 %>
             </tr>
           <% end %>
