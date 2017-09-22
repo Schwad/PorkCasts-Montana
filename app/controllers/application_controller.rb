@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   require "#{Rails.root}/app/helpers/application_helper"
 
-
+  before_action do
+    if current_user && current_user.is_admin?
+      Rack::MiniProfiler.authorize_request
+    end
+  end
 #make services folder; service object.
 #abstractions of business logic (aka api's).
   rescue_from CanCan::AccessDenied do |exception|

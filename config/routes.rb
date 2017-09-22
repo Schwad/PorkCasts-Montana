@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
-      resources dashboard_resource
-    end
 
-    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
-  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -17,12 +11,12 @@ Rails.application.routes.draw do
   root "static_pages#index"
   get "static_pages/about", :as => 'about_page'
   get "static_pages/denied", :as => 'denied_page'
-  get "static_pages/shared", :as => 'shared_page'
   get "static_pages/news", :as => 'news_page'
   get "static_pages/tutorial", :as => 'tutorial_page'
   resources :users do
     resources :queries
   end
+  get '/queries/:id', to: 'queries#show'
   resources :tags
 
   # You can have the root of your site routed with "root"

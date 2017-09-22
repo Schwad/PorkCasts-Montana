@@ -45,11 +45,11 @@
     <div class = "row">
       <div class = "col-md-12">
         <div class = "share-hold">
-          <% my_link = shared_page_path(@query.content) %>
+          <!-- <% my_link = shared_page_path(@query.content) %> -->
 
           <br><br>
           <h3 style="margin-top:-20px; margin-left:12px;">Share with this link: </h3>
-          <div style="margin-left:15px; border: 2px solid black; border-radius: 4px; width: 368px;"><%= text_field_tag(:q, "porkcast.herokuapp.com#{my_link}",size: 50) %></div>
+          <div style="margin-left:15px; border: 2px solid black; border-radius: 4px; width: 368px;"><%= text_field_tag(:q, "porkcast.herokuapp.com/queries/#{@query.id}",size: 50) %></div>
         </div>
         <div class="graph-hold">
           <div id="curve_chart" style="height: 242px; border-radius: 4px; overflow:auto;">
@@ -119,5 +119,3 @@
     <div class="scroll-down"><h4 style="text-align:right; margin-right: 30px; margin-top: 8px;">Scroll down....</h4></div>
 </div>
 </div>
-
-
