@@ -4,7 +4,7 @@ class QueriesController < ApplicationController
   #Rails.application.config.my_config["hashtable"]["A"]
   #Rails.application.config.my_config["array"]
 
-  before_action :require_current_user
+  before_action :require_current_user, except: :show
   require "#{Rails.root}/app/helpers/application_helper"
   include ApplicationHelper
   def index
@@ -15,24 +15,11 @@ class QueriesController < ApplicationController
   end
 
   def edit
-    @query = Query.find(params[:id])
-    @user = current_user
-  end
-
-  def update
-    @query = Query.find(params[:id])
-    @query.content = params[:query][:content]
-    @query.save
-    redirect_to user_query_path(@query.id)
-  end
-
-  def new
-    @user = current_user
-    @query = Query.new
-
+    #use this for notifications
   end
 
   def create
+    # I may need to use this for adding to user_query
     #KILLING-COPY-CODE-FLAG
     # @query_email = params[:query][:content]
     # if @query_email.include? "@"
@@ -63,6 +50,7 @@ class QueriesController < ApplicationController
   end
 
   def destroy
+    #removing user_query
     @query = Query.find(params[:id])
     @save_query = @query.id
     @query.destroy
@@ -74,6 +62,7 @@ class QueriesController < ApplicationController
 
   def show
     @query = Query.find(params[:id])
+    @query.includes(:checks, :credit_cards)
     if @query.checks.count == 0 && @query.credit_cards.count == 0
         flash[:success] = "Maybe you didn't get an exact match? Check out the autosuggest and try again!"
     end
@@ -81,6 +70,7 @@ class QueriesController < ApplicationController
   end
 
   def update
+    #updating user query
     @query = Query.find(params["id"])
     @user = User.find(@query.user_id)
 
