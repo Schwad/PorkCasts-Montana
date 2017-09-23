@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get '/queries/:id', to: 'queries#show'
   resources :tags
   get '/search', to: 'searches#show'
+  get '/private_search', to: 'searches#private_show'
   post '/search', to: 'searches#search'
+  post '/private_search', to: 'searches#private_search'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

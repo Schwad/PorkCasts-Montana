@@ -1,7 +1,9 @@
 class SearchesController < ApplicationController
 
   def show
+  end
 
+  def private_show
   end
 
   def search
@@ -9,4 +11,8 @@ class SearchesController < ApplicationController
     render 'show'
   end
 
+  def private_search
+    @queries = Query.search params[:q], limit: 15, fields: [:content]
+    render 'private_show'
+  end
 end
