@@ -1,0 +1,23 @@
+      <h3>
+      Greetings,
+      <br><br>
+      Shortly following our week of work to get the data online, it would appear that the State of Montana re-uploaded its API last night.
+      <br><br>
+      <strong>What you need to know:</strong>
+      <ul>
+        <li>PorkCast.com is back online and seems to be functional through our first few hours of tests.</li>
+        <li>Please continue to report any interruptions to service or errors to this email address.</li>
+        <li>Part of the new API includes a <strong>LOT of new payment data!</strong> This means there is a possibility that you might get a lot of PorkCasts tomorrow. We are trying to rewrite the code so if you get a bunch of new check/credit card payment records in one day it just sends in one email. But tomorrow may be multiple.</li>
+        <li>Over this next week we will be very carefully combing over the new dataset the State has provided us to inspect for any irregularities.</li>
+      </ul>
+      </h3><br><br>
+      <h4>
+        As a reminder, the queries that you are currently signed up to receive "PorkCasts" on (AKA an email whenever they get new money from the State) are:<br><br>
+        <ol>
+          <% @user.queries.where(opt_out_email: false).each do |query| %>
+            <li><%= query.content %></li>
+          <% end %>
+        </ol>
+        <br><br>
+        You can change this anytime under "list porkcasts" at your PorkCast.com account.<br><br>
+      Best, <br><br>PorkCast Montana Team.

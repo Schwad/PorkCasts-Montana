@@ -1,0 +1,25 @@
+<div class="page-wrap">
+  <h1>SEARCH</h1>
+  <%= form_tag private_search_path do %>
+    <%= label_tag :q, 'Query' %>
+    <%= text_field_tag :q %>
+    <%= submit_tag 'Submit' %>
+  <% end %>
+  <% if @queries %>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4", style="text-align:center">
+          <h3>Payee Name</h3>
+        </div>
+      </div>
+      <% @queries.each do |query| %>
+        <div class="row">
+          <div class="col-md-2">
+            <strong><%= link_to query.content, "/queries/#{query.id}" %></strong>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

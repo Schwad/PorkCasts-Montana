@@ -1,0 +1,46 @@
+
+<% if @payments.length > 1 %>
+  <h2>You have <%= @payments.length %> new PorkCasts!</h2>
+<% else %>
+  <h2>You have a new PorkCast!</h2>
+<% end %>
+<br>
+
+
+<h3><p>On <%= Date.today.strftime("%d/%m/%Y") %> Your page on PorkCast has been updated to show new payments the State of Montana made to your queries. Below is a summary, Go to the main <%= link_to "PorkCast", "http://www.porkcast.com" %> website to check it out!</p></h3>
+
+<table>
+  <thead>
+    <th>Payee</th>
+    <th>Amount</th>
+    <th>Payment Date</th>
+  </thead>
+ <tbody style="border:solid black 2px">
+    <% @payments.each do |payment| %>
+      <tr style="border:solid black 2px">
+        <td><%= payment[0] %></td>
+        <td>$<%= sprintf( "%0.02f", payment[1]) %></td>
+        <td><%= payment[2].strftime("%d/%m/%Y") %></td>
+      </tr>
+
+    <% end %>
+ </tbody>
+</table>
+
+<p><em>This email was sent to <%= @user.email %>. To unsubscribe from this PorkCast log in and disable notifications for this or all PorkCasts at  <a href="http://www.porkcast.com">http://www.porkcast.com</a></em></p>
+
+<em>
+
+  <br>In 2016 we plan on launching our next big release of PorkCast, which will include:
+  <ul>Google chrome browsing extension, if you are reading an article and a party that receives state $$$ is mentioned, that name will be highlighted with a link to the page about their tax dollar receipts</ul>
+  <ul>1000x times larger database (if the state ever deletes data, we will have a fully intact latest version of the data preserved)</ul>
+  <ul>Registration free browsing (for folks who want to search, but do not want payment notifications) </ul>
+  <ul>A sleek interface that is geared for easier use on iPads and smartphones</ul>
+  <ul>Lightning fast query speed</ul>
+  <ul>PDF and Excel Report Exporting</ul>
+  <ul>Upgrades to our PorkCast <a href="http://www.twitter.com/porkcast">twitterbot</a></ul>
+
+<p>If you have further ideas on features you would like to see in the 2.0 release, we would love to hear from you at this email!</p>
+<br>
+PorkCast is offered as a service freely to the people of Montana, built by concerned volunteers who support government accountability.
+However, these upgrades and services are not free to provide. If you would like to see PorkCast continue and grow, <a href="paypal.me/PorkCast"><strong>consider chipping in today</strong></a></em>

@@ -1,0 +1,16 @@
+You have a new PorkCast!
+
+On <%= Date.today.strftime("%d/%m/%Y") %> your page on PorkCast has been updated to show new payments the State of Montana made to your queries. Below is a summary, Go to the main <%= link_to "PorkCast", "http://www.porkcast.com" %> website to check it out! (PS: your email is set up not to accept HTML, that's cool, but just so you know we cannot style this summary as well without it)
+
+
+<% @payments.each do |payment| %>
+    <%= payment[0] %>
+    <%= payment[1] %>
+    <%= payment[2].strftime("%d/%m/%Y") %>
+
+<% end %>
+
+
+This email was sent to <%= @user.email %>. To unsubscribe from this PorkCast log in and disable notifications for this or all PorkCasts at  https://porkcast.herokuapp.com"
+
+PorkCast is offered as a service freely to the people of Montana, built by concerned volunteers who support government accountability. However, it is not free to provide. If you would like to see PorkCast continue and grow, <a href="paypal.me/PorkCast">consider making a donation today.

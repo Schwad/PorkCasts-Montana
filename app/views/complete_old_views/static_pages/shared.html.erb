@@ -1,0 +1,91 @@
+<% if @query == "no queries" %>
+  <div class="upper-fold">
+    <div class="row alternative-page">
+      <div class="col-sm-12">
+        <h1><strong>PorkCasts</strong></h1>
+        <h2 style="text-align:center;"><strong><span style="color:red">The shared page you are trying access does not currently exist.</span> Either this record is no longer in our database our you attempted to reverse engineer access to data by changing around the params. To get direct access to the data consider <%= link_to "signing up here.", new_user_registration_path %></strong></h2>
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-md-12">
+        <h1 style="text-align:center">PorkCasting Tutorial</h1><br>
+        <div style="margin-left:auto; margin-right:auto; width:920px;">
+          <iframe width="920" height="485" src="https://www.youtube.com/embed/tghNckELalg" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <div class="page-wrap">
+  <div class = "row" >
+    <div style="margin-bottom:-20px;"><h2 style="text-align: center; margin-bottom:-25px;">Payments to <%= @query.content %></h2></div>
+  </div>
+  <br><br>
+  <h3 style="margin-top:-20px; margin-left:12px;">Share with this link: </h3>
+    <div style="margin-left:15px; border: 2px solid black; border-radius: 4px; width: 368px;"><%= text_field_tag(:q, "porkcast.herokuapp.com/queries/#{@query.id}",size: 50) %></div>
+  <div class = "row">
+    <div class = "col-md-4">
+      <div class = "row">
+        <div class = "col-md-12">
+          <div id="curve_chart" style="height: 242px; border-radius: 4px; overflow:auto;">
+            <h3 style="text-align: center;">Checks by Category</h3>
+            <%= pie_chart @query.checks.group(:payment_category).count, height: "175px" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="curve_chart" style="height: 242px;; border-radius: 4px; margin-top: 6px; overflow:auto;">
+            <h4 style="text-align: center;">Credit Card Charges by Department</h4>
+            <%= pie_chart @query.credit_cards.group(:department).count, height: "175px" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "col-md-8" style="height: 490px; margin-left: -11px; border-radius: 4px;   box-shadow: 5px 5px 5px -3px rgba(0,0,0,0.63); overflow:auto;">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <th>#</th>
+          <th>Payment to:</th>
+          <th>Amount</th>
+          <th>Date Paid</th>
+          <th>Department</th>
+          <th>Payment Category</th>
+          <th>Check or Card</th>
+        </thead>
+        <tbody>
+          <% i = 1 %>
+          <% @query.checks.each do |check| %>
+            <tr class="pork-row">
+              <td><%= i %></td>
+              <td><%= @query.content %></td>
+              <td><%= check.amount %></td>
+              <td><%= check&.payment_date&.to_date&.strftime("%m/%d/%Y") %></td>
+              <td><%= check.department %></td>
+              <td><%= check&.payment_category %></td>
+              <td>Check</td>
+              <% i += 1 %>
+            </tr>
+          <% end %>
+
+          <% @query.credit_cards.each do |card| %>
+            <tr class="pork-row">
+              <td><%= i %></td>
+              <td><%= @query.content %> </td>
+              <td><%= card.amount %></td>
+              <td><%= card.billing_date %></td>
+              <td><%= card.department %></td>
+              <td>N/A</td>
+              <td>Credit Card</td>
+              <% i += 1 %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <h4 style="text-align:right; margin-right: 30px; margin-bottom: -30px;">Scroll down....</h4>
+  </div>
+  </div>
+<% end %>
