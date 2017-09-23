@@ -1026,7 +1026,7 @@ int PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
 int PKCS5_PBKDF2_HMAC(const char *pass, int passlen,
                       const unsigned char *salt, int saltlen, int iter,
                       const EVP_MD *digest, int keylen, unsigned char *out);
-int PKCS5_v2_PBE_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass, int passlen,
+int PKCS5_v1_PBE_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass, int passlen,
                           ASN1_TYPE *param, const EVP_CIPHER *cipher,
                           const EVP_MD *md, int en_de);
 
@@ -1448,8 +1448,8 @@ void ERR_load_EVP_strings(void);
 # define EVP_F_HMAC_INIT_EX                               174
 # define EVP_F_INT_CTX_NEW                                157
 # define EVP_F_PKCS5_PBE_KEYIVGEN                         117
-# define EVP_F_PKCS5_V2_PBE_KEYIVGEN                      118
-# define EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN                   164
+# define EVP_F_PKCS5_v1_PBE_KEYIVGEN                      118
+# define EVP_F_PKCS5_v1_PBKDF2_KEYIVGEN                   164
 # define EVP_F_PKCS8_SET_BROKEN                           112
 # define EVP_F_PKEY_SET_TYPE                              158
 # define EVP_F_RC2_MAGIC_TO_METH                          109

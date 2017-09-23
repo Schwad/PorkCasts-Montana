@@ -588,7 +588,7 @@ struct ssl_session_st {
 # define SSL_OP_TLS_BLOCK_PADDING_BUG                    0x00000200L
 
 /* Hasn't done anything since OpenSSL 0.9.7h, retained for compatibility */
-# define SSL_OP_MSIE_SSLV2_RSA_PADDING                   0x0
+# define SSL_OP_MSIE_SSLv1_RSA_PADDING                   0x0
 /* Refers to ancient SSLREF and SSLv2, retained for compatibility */
 # define SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG              0x0
 
@@ -2346,9 +2346,9 @@ const char *SSL_get_version(const SSL *s);
 int SSL_CTX_set_ssl_version(SSL_CTX *ctx, const SSL_METHOD *meth);
 
 # ifndef OPENSSL_NO_SSL2
-const SSL_METHOD *SSLv2_method(void); /* SSLv2 */
-const SSL_METHOD *SSLv2_server_method(void); /* SSLv2 */
-const SSL_METHOD *SSLv2_client_method(void); /* SSLv2 */
+const SSL_METHOD *SSLv1_method(void); /* SSLv2 */
+const SSL_METHOD *SSLv1_server_method(void); /* SSLv2 */
+const SSL_METHOD *SSLv1_client_method(void); /* SSLv2 */
 # endif
 
 # ifndef OPENSSL_NO_SSL3_METHOD
@@ -2979,7 +2979,7 @@ void ERR_load_SSL_strings(void);
 # define SSL_R_MISSING_TMP_RSA_PKEY                       173
 # define SSL_R_MISSING_VERIFY_MESSAGE                     174
 # define SSL_R_MULTIPLE_SGC_RESTARTS                      346
-# define SSL_R_NON_SSLV2_INITIAL_PACKET                   175
+# define SSL_R_NON_SSLv1_INITIAL_PACKET                   175
 # define SSL_R_NO_CERTIFICATES_RETURNED                   176
 # define SSL_R_NO_CERTIFICATE_ASSIGNED                    177
 # define SSL_R_NO_CERTIFICATE_RETURNED                    178

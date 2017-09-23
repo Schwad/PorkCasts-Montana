@@ -1,9 +1,0 @@
-
-<% if @query.opt_out_email == true %>
- $("td#statement-<%=@query.id%>").html("No");
- $("td#link-<%=@query.id%>").html("<%= escape_javascript(link_to 'Opt In Email', user_query_path(@user.id, @query.id), :method => :put, :remote => true)  %>");
-<% elsif @query.opt_out_email == false %>
-console.log("false");
- $("td#statement-<%=@query.id%>").html("Yes");
- $("td#link-<%=@query.id%>").html("<%= escape_javascript(link_to 'Opt Out Email', user_query_path(@user.id, @query.id), :method => :put, :remote => true)  %>");
-<% end %>

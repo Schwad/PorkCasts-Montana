@@ -24,8 +24,8 @@
         <% @queries.order("id ASC").each do |query| %>
           <tr class="pork-row" id="query-<%=query.id%>">
             <td><%= i %></td>
-            <td><%= link_to query.content, user_query_path(@user.id, query.id) %></td>
-            <td><%= link_to "Show Payments", user_query_path(@user.id, query.id) %></td>
+            <td><%= link_to query.content, v1_user_query_path(@user.id, query.id) %></td>
+            <td><%= link_to "Show Payments", v1_user_query_path(@user.id, query.id) %></td>
             <td><%= query.created_at.strftime("%m/%d/%Y") %></td>
             <td><%= "$" + number_with_precision(query.payment_sum, :precision => 2, :delimiter => ',').to_s %></td>
             <td><%= query.checks.count + query.credit_cards.count %></td>
@@ -35,9 +35,9 @@
               <%= "$" + number_with_precision(query.payment_sum / (query.checks.count + query.credit_cards.count), :precision => 2, :delimiter => ',').to_s %>
               <% end %></td>
             <td><%= "$" + number_with_precision(query.largest_payment, :precision => 2, :delimiter => ',').to_s %></td>
-            <td><%= link_to "delete query", user_query_path(@user.id, query.id), :method => :delete, :remote => true %></td>
+            <td><%= link_to "delete query", v1_user_query_path(@user.id, query.id), :method => :delete, :remote => true %></td>
             <td id="statement-<%=query.id%>"><% if query.opt_out_email == false %>Yes<% else %>No<% end %></td>
-            <td id="link-<%=query.id%>"><% if query.opt_out_email == false %><%= link_to "Opt Out Email", user_query_path(@user.id, query.id), :method => :put, :remote => true  %><% else %><%= link_to "Opt In Email", user_query_path(@user.id, query.id), :method => :put, :remote => true  %><% end %></td>
+            <td id="link-<%=query.id%>"><% if query.opt_out_email == false %><%= link_to "Opt Out Email", v1_user_query_path(@user.id, query.id), :method => :put, :remote => true  %><% else %><%= link_to "Opt In Email", v1_user_query_path(@user.id, query.id), :method => :put, :remote => true  %><% end %></td>
             <% i += 1 %>
           <% end %>
         </tr>

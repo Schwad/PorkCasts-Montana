@@ -1,6 +1,6 @@
 <div class="page-wrap">
   <h1>SEARCH</h1>
-  <%= form_tag search_path do %>
+  <%= form_tag v1_search_path do %>
     <%= label_tag :q, 'Query' %>
     <%= text_field_tag :q %>
     <%= submit_tag 'Submit' %>
@@ -16,7 +16,7 @@
       <% @queries.each do |query| %>
         <div class="row">
           <div class="col-md-2 col-md-offset-4", style="text-align:center">
-            <strong><%= link_to query.content.upcase, user_queries_path(user_id: current_user.id, query_id: query.id), method: :post %></strong>
+            <strong><%= link_to query.content.upcase, v1_user_queries_path(user_id: current_user.id, query_id: query.id), method: :post %></strong>
           </div>
         </div>
       <% end %>

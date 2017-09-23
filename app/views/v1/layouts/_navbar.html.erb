@@ -17,17 +17,17 @@
       <ul class="nav navbar-nav">
         <li class="active">
           <% if !current_user %>
-          <%= link_to "Home", root_path %>
+          <%= link_to "Home", v1_index_path %>
           <% else %>
-          <%= link_to "Home", user_queries_path(current_user.id) %>
+          <%= link_to "Home", v1_user_queries_path(current_user.id) %>
           <% end %><span class="sr-only">(current)</span></li>
         <% if current_user %>
         <li ><%= link_to current_user.email, edit_user_registration_path %></li>
         <% end %>
-        <li ><%= link_to "About", about_page_path %></li>
-        <li style="background-color:#FC8EA6;color:black;"><%= link_to "Tutorial", tutorial_page_path %></li>
+        <li ><%= link_to "About", v1_about_page_path %></li>
+        <li style="background-color:#FC8EA6;color:black;"><%= link_to "Tutorial", v1_tutorial_page_path %></li>
         <li class="donate-link"><%= link_to "Donate", "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J2MJ2TCC7EBXU&lc=US&item_name=PorkCasts&currency_code=USD&bn=PP%2dDonationsBF%3azuhqEnP%2epng%3aNonHosted"%></li>
-        <li ><%= link_to "Private Search", private_search_path %></li>
+        <li ><%= link_to "Private Search", v1_private_search_path %></li>
 <!--         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -49,7 +49,7 @@
       </form> -->
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li><%= link_to "List My PorkCasts", user_queries_path(current_user.id) %>
+          <li><%= link_to "List My PorkCasts", v1_user_queries_path(current_user.id) %>
           <li style="background-color:#91BCF1;color:black;"><%= link_to "+ Add New", search_path %>
           <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
