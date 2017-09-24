@@ -61,6 +61,8 @@ a {
     font-weight: 700; }
   #mainNav a {
     color: white; }
+  #mainNav a:hover {
+    color: black; }
   #mainNav .navbar-nav .nav-item {
     -webkit-transition: background 0.3s ease-in-out;
     -moz-transition: background 0.3s ease-in-out;
@@ -68,30 +70,11 @@ a {
     #mainNav .navbar-nav .nav-item:hover {
       color: fade(white, 80%);
       outline: none;
-      background-color: transparent; }
+      background-color: white; }
     #mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
       outline: none;
-      background-color: transparent; }
-  @media (min-width: 992px) {
-    #mainNav {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
-      -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
-      transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
-      letter-spacing: 1px;
-      border-bottom: none;
-      background: transparent; }
-      #mainNav.navbar-shrink {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        background: black; }
-      #mainNav .nav-link.active {
-        outline: none;
-        background-color: rgba(255, 255, 255, 0.3); }
-        #mainNav .nav-link.active:hover {
-          color: white; } }
+      color: black;
+      background-color: white; }
 
 .masthead {
   display: table;
@@ -100,7 +83,7 @@ a {
   padding: 200px 0;
   text-align: center;
   color: white;
-  background: url("../img/intro-bg.jpg") no-repeat bottom center scroll;
+  background: url("../assets/bg.jpg") no-repeat bottom center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -146,7 +129,7 @@ a {
 
 .download-section {
   color: white;
-  background: url("../img/downloads-bg.jpg") no-repeat center center scroll;
+  /*background: url("../img/downloads-bg.jpg") no-repeat center center scroll;*/
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;

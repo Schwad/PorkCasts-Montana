@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require landing_page
 //= require bootstrap-sprockets
 //= require social-share-button
 //= require jquery-ui
