@@ -1,0 +1,16 @@
+body {
+  .scroller-footer {
+  		opacity: 0;
+  		pointer-events: none;
+  	}
+  &.scrolled {
+  	.scroller-footer {
+  		// Make scroller-footer visible:
+  		opacity: 1;
+  		pointer-events: auto;
+      transition-property: all;
+      transition-duration: 1.5s;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  	}
+  }
+}

@@ -1,0 +1,30 @@
+.nav-item .tooltiptext {
+    visibility: hidden;
+    width: 190px;
+    background-color: #31B0D5;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 20%;
+    margin-left: -60px;
+    opacity: 0.85;
+}
+
+.nav-item .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #31B0D5 transparent;
+}
+
+.nav-item:hover .tooltiptext {
+    visibility: visible;
+}

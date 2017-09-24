@@ -9,36 +9,38 @@
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
           <% if !current_user %>
-          <%= link_to "Home", root_path, class: 'nav-link' %>
+          <%= link_to root_path do %><span class="fa fa-home fa-1x"></span> Home <% end %>
           <% else %>
-          <%= link_to "Home", user_queries_path(current_user.id), class: 'nav-link' %>
+          <%= link_to user_queries_path(current_user.id) do %><span class="fa fa-home fa-1x"></span> Home <% end %>
           <% end %>
         </li>
         <% if current_user %>
-        <li class='nav-item'><%= link_to current_user.email, edit_user_registration_path, class: 'nav-link' %></li>
+
+        <li class='nav-item'><%= link_to edit_user_registration_path,  title: 'View Agent Data', 'data-toggle' => 'tooltip', 'data-placement' => 'right' do %><span class="fa fa-cog fa-1x"></span> My Account <% end %></li>
         <% end %>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#tutorial">Tutorial</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-        </li>
-        <li class="nav-item"><%= link_to "Donate", "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J2MJ2TCC7EBXU&lc=US&item_name=PorkCasts&currency_code=USD&bn=PP%2dDonationsBF%3azuhqEnP%2epng%3aNonHosted", class: 'nav-link'%>
-        </li>
+        <% unless current_user %>
+          <li class="nav-item">
+            <a class="js-scroll-trigger" href="#about"><span class="fa fa-question-circle fa-1x"></span> About</a>
+          </li>
+          <li class="nav-item">
+            <a class="js-scroll-trigger" href="#tutorial"><span class="fa fa-video-camera fa-1x"></span> Tutorial<span class="tooltiptext">See a live example of PorkCasts in action</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="js-scroll-trigger" href="#contact"><span class="fa fa-envelope fa-1x"></span> Contact</a>
+          </li>
+        <% end %>
         <li class='nav-item'>
-          <%= link_to "Private Search", private_search_path, class: 'nav-link' %>
+          <%= link_to private_search_path do %><span class="fa fa-search fa-1x"></span> Private Search <span class="tooltiptext">Quickly browse our databases incognito.</span> <% end %>
+          <!-- <%= link_to "Private Search", private_search_path, class: 'nav-link' %> -->
         <li>
 
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li class="nav-item"><%= link_to "List My PorkCasts", user_queries_path(current_user.id), class: 'nav-link' %>
-          <li style="background-color:#91BCF1;color:black;"><%= link_to "+ Add New", search_path, class: 'nav-link' %>
-          <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to user_queries_path(current_user.id) do %><span class="fa fa-list-ul fa-1x"></span> List My PorkCasts <% end %>
+          <li style="background-color:#91BCF1;color:black;"><%= link_to search_path do %><span class="fa fa-plus fa-1x"></span> Add New <% end %>
+          <li class="nav-item"><%= link_to destroy_user_session_path, :method => :delete do %><span class="fa fa-sign-out fa-1x"></span> Sign Out <% end %></li>
         <% else %>
           <li class="nav-item"><%= link_to "Sign In", new_user_session_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path(:user => { :email => "" }, :query => { :content => "Click New Porkcast to start!"}), class: 'nav-link' %></li>
