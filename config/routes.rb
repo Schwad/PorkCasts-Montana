@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   root "static_pages#index"
   get "static_pages/about", :as => 'about_page'
   get "static_pages/denied", :as => 'denied_page'
-  get "static_pages/news", :as => 'news_page'
   get "static_pages/tutorial", :as => 'tutorial_page'
   resources :users do
     resources :queries
