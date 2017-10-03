@@ -1,31 +1,33 @@
-<div class="page-wrap">
-  <div style="margin-left:500px;">
-    <br><br><br><br>
-<h2>Log in</h2>
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-4">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="header" style="text-align:center;">
+        <h1>Sign In</h1>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="form-group clearfix">
+          <%= f.label :email%>
+          <%= f.email_field :email, placeholder: 'e.g. john@doe.com', class: 'form-control' %>
+        </div>
+
+        <div class="form-group clearfix">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <div class="actions"%>
+          <%= f.submit "Log In", class: "btn btn-default btn-success btn-lg" %>
+          <%= link_to 'Back', root_path, class: "btn btn-default btn-default btn-lg" %>
+        </div>
+
+        <div class="devise-links">
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-</div>
 </div>

@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'bootstrap';
 
 #the_fine_print {
   background-color: $dark-color-1;
@@ -16,4 +17,8 @@
   a {
     color: $light-color-1;
   }
+}
+.devise-links a {
+  color: white;
+  font-size: 1.2em;
 }
