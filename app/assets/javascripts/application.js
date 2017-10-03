@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require social-share-button
 //= require jquery-ui
+//= require show
 //= require_tree .

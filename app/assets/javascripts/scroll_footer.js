@@ -3,7 +3,7 @@ var ScrollDetector = function()
     "use strict";
 
   window.addEventListener( 'scroll', function() {
-      if( window.scrollY < 50 && $('body#landing-page').length != 1)
+      if( window.scrollY < 50 && $('#main-landing-page').length !=0)
       {
           document.body.classList.remove( 'scrolled' );
           var elem = document.getElementById("mainNav");
