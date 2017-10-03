@@ -1,25 +1,46 @@
-<div class="page-wrap">
-  <h1>SEARCH</h1>
-  <%= form_tag search_path do %>
-    <%= label_tag :q, 'Query' %>
-    <%= text_field_tag :q %>
-    <%= submit_tag 'Submit' %>
-  <% end %>
-  <% if @queries %>
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-2 col-md-offset-4", style="text-align:center">
-          <h3>Payee Name</h3>
-        </div>
-      </div>
-      <% @queries.each do |query| %>
-        <div class="row">
-          <div class="col-md-2 col-md-offset-4", style="text-align:center">
-            <strong><%= link_to query.content.upcase, user_queries_path(user_id: current_user.id, query_id: query.id), method: :post %></strong>
-          </div>
+<div class='container pc-page'>
+  <br><br><br>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-3">
+      <h1 style='text-align:center;'>Search</h1>
+      <br>
+      <%= form_tag search_path do %>
+        <div class="input-group">
+          <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search for...' %><br>
+          <span class="input-group-btn">
+            <%= submit_tag 'Submit', class: 'btn btn-success' %>
+          </span>
         </div>
       <% end %>
     </div>
+  </div>
+  <hr>
+  <% if @queries %>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Results</h3>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-4", style="text-align:center">
+        <h3>Payee Name</h3>
+      </div>
+    </div>
+    <% @queries.each do |query| %>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4", style="text-align:center">
+          <strong><%= link_to query.content.upcase, user_queries_path(user_id: current_user.id, query_id: query.id), method: :post %></strong>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-3">
+        <%= render partial: 'about_searching' %>
+      </div>
+
+    </div>
   <% end %>
+
 </div>
