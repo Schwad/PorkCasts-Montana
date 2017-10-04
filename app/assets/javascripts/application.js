@@ -18,4 +18,5 @@
 //= require social-share-button
 //= require jquery-ui
 //= require show
+//= require autocomplete_pc
 //= require_tree .

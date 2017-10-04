@@ -1,6 +1,5 @@
 class QueriesController < ApplicationController
 
-
   #Rails.application.config.my_config["hashtable"]["A"]
   #Rails.application.config.my_config["array"]
 
@@ -69,7 +68,6 @@ class QueriesController < ApplicationController
     if @query.checks.count == 0 && @query.credit_cards.count == 0
         flash[:success] = "Maybe you didn't get an exact match? Check out the autosuggest and try again!"
     end
-
   end
 
   def update

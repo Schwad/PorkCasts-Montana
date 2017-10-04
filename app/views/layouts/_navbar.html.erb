@@ -20,18 +20,17 @@
         <% end %>
         <% unless current_user %>
           <li class="nav-item">
-            <a class="js-scroll-trigger" href="#about"><span class="fa fa-question-circle fa-1x"></span> About</a>
+            <a class="js-scroll-trigger" href="/#about"><span class="fa fa-question-circle fa-1x"></span> About</a>
           </li>
           <li class="nav-item">
-            <a class="js-scroll-trigger" href="#tutorial"><span class="fa fa-video-camera fa-1x"></span> Tutorial<span class="tooltiptext">See a live example of PorkCasts in action</span></a>
+            <a class="js-scroll-trigger" href="/#tutorial"><span class="fa fa-video-camera fa-1x"></span> Tutorial<span class="tooltiptext">See a live example of PorkCasts in action</span></a>
           </li>
           <li class="nav-item">
-            <a class="js-scroll-trigger" href="#contact"><span class="fa fa-envelope fa-1x"></span> Contact</a>
+            <a class="js-scroll-trigger" href="/#contact"><span class="fa fa-envelope fa-1x"></span> Contact</a>
           </li>
         <% end %>
         <li class='nav-item'>
           <%= link_to private_search_path do %><span class="fa fa-search fa-1x"></span> Private Search <span class="tooltiptext">Quickly browse our databases incognito.</span> <% end %>
-          <!-- <%= link_to "Private Search", private_search_path, class: 'nav-link' %> -->
         <li>
 
         </li>

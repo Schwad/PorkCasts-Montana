@@ -6,10 +6,13 @@
       <br>
       <%= form_tag search_path do %>
         <div class="input-group">
-          <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search for...' %><br>
+          <%= text_field_tag :content, nil, class: 'form-control', id: 'pc-autocomplete', placeholder: 'Search for...' %><br>
           <span class="input-group-btn">
             <%= submit_tag 'Submit', class: 'btn btn-success' %>
           </span>
+        </div>
+        <div id="autocomplete-suggestion", style: 'display:block;'>
+
         </div>
       <% end %>
     </div>
@@ -43,3 +46,35 @@
   <% end %>
 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    console.log('loaded');
+    if($('#pc-autocomplete').length ==1){
+      console.log('triggering 3');
+      $('#pc-autocomplete').keyup(function () {
+        console.log("event is: " + $(this).val());
+        triggerSearch($(this).val());
+      });
+      $('#autocomplete-suggestion').click(function() {
+        $("#pc-autocomplete").val($(".best-match strong")[0].innerHTML)
+      })
+    } else {
+      console.log('wtf')
+    }
+  });
+
+  var triggerSearch = function(term) {
+    console.log('triggering 12');
+    var request = $.ajax({
+      url: "/autocomplete",
+      method: "GET",
+      data: { term: term },
+      dataType: "json"
+    });
+
+    request.done(function( msg ) {
+      $( "#autocomplete-suggestion" ).html('<div class=\'best-match\'>Best match: <strong>' + msg["result"] + '</strong></div>')
+    });
+  }
+</script>

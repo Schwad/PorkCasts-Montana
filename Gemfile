@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'rubocop', require: false
 gem 'cancancan', '~> 1.10'
 gem 'searchkick'
+# jQuery UI dependency.
+gem 'jquery-ui-rails'
 #everyday rails rec cluster.
 group :development,:test do
   gem "rspec-rails", "~> 3.1.0"
@@ -44,9 +46,7 @@ gem 'social-share-button'
 gem 'groupdate'
 gem "chartkick"
 gem "font-awesome-rails"
-gem 'pg'
 gem 'puma'
-gem 'jquery-ui-rails'
 gem 'taps'
 gem 'devise'
 gem 'newrelic_rpm'
